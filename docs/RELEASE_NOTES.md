@@ -6,8 +6,8 @@ Android NFC 标签读写工具箱（`com.nfctool.app`），Jetpack Compose 单 A
 
 | 文件 | 体积 | 说明 |
 |---|---|---|
-| `NFC工具箱-5.0MB-主推.apk` | 5.0 MB | **日常用这个**。R8 混淆 + 资源裁剪 + 仅 arm64-v8a |
-| `NFC工具箱-20.3MB-不混淆对照.apk` | 20.3 MB | 仅裁 ABI、不混淆。**只在主推版装不上时**用来对比定位 |
+| `NFCTool-v1.0.1-arm64.apk` | 5.0 MB | **日常用这个**。R8 混淆 + 资源裁剪 + 仅 arm64-v8a |
+| `NFCTool-v1.0.1-noshrink-compare.apk` | 20.3 MB | 仅裁 ABI、不混淆。**只在主推版装不上时**用来对比定位 |
 
 要求 Android 7.0（API 24）以上、设备带 NFC。装过旧版请先卸载：`adb uninstall com.nfctool.app`。
 

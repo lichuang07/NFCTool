@@ -217,8 +217,20 @@ def read_version():
     return m.group(1) if m else "1.0.0"
 
 
-def upload_asset(token, owner, repo, release_id, path):
-    name = os.path.basename(path)
+def asset_name(src_name, tag):
+    """
+    GitHub 会清洗 Release asset 的文件名：非 ASCII 字符被删除、连续非法字符折叠成一个 '.'。
+    实测 `NFC工具箱-5.0MB-主推.apk` 传上去变成 `NFC.-5.0MB-.apk`，已无法辨认。
+    所以这里主动改成纯 ASCII 的名字。
+    """
+    lower = src_name.lower()
+    if "对照" in src_name or "noshrink" in lower:
+        return "NFCTool-%s-noshrink-compare.apk" % tag
+    return "NFCTool-%s-arm64.apk" % tag
+
+
+def upload_asset(token, owner, repo, release_id, path, name=None):
+    name = name or os.path.basename(path)
     ctype = mimetypes.guess_type(name)[0] or "application/octet-stream"
     if name.endswith(".apk"):
         ctype = "application/vnd.android.package-archive"
@@ -244,6 +256,9 @@ def publish_release(token, owner, repo, tag):
     try:
         rel = api("GET", "/repos/%s/%s/releases/tags/%s" % (owner, repo, tag), token)
         print(">>> Release %s 已存在，复用 (id=%s)" % (tag, rel["id"]))
+        # 正文（docs/RELEASE_NOTES.md）可能改过，同步一次
+        rel = api("PATCH", "/repos/%s/%s/releases/%d" % (owner, repo, rel["id"]), token,
+                  {"body": body})
     except SystemExit:
         rel = api("POST", "/repos/%s/%s/releases" % (owner, repo), token, {
             "tag_name": tag,
@@ -255,13 +270,19 @@ def publish_release(token, owner, repo, tag):
         print(">>> Release %s 已创建 (id=%s)" % (tag, rel["id"]))
 
     dist = os.path.join(ROOT, "dist")
+    existing = {a["name"]: a["id"] for a in rel.get("assets", [])}
     for name in sorted(os.listdir(dist)):
         if not name.endswith(".apk"):
             continue
         path = os.path.join(dist, name)
+        target = asset_name(name, tag)
+        # 同名 asset 已存在会报 422 already_exists，先删再传
+        if target in existing:
+            print(">>> 删除同名旧附件 %s" % target)
+            api("DELETE", "/repos/%s/%s/releases/assets/%d" % (owner, repo, existing[target]), token)
         size = os.path.getsize(path)
-        print(">>> 上传 %s (%.1f MB)" % (name, size / 1024.0 / 1024.0))
-        asset = upload_asset(token, owner, repo, rel["id"], path)
+        print(">>> 上传 %s -> %s (%.1f MB)" % (name, target, size / 1024.0 / 1024.0))
+        asset = upload_asset(token, owner, repo, rel["id"], path, target)
         print("    -> %s" % asset.get("browser_download_url", asset.get("url")))
     return rel
 

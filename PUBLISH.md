@@ -84,6 +84,11 @@ dist/NFC工具箱-5.0MB-主推.apk          5,204,164 B   日常用
 dist/NFC工具箱-20.3MB-不混淆对照.apk   21,321,349 B  只在主推版装不上时对比
 ```
 
+⚠️ **不要直接拖中文名文件上去**：GitHub 会清洗 Release asset 的文件名，非 ASCII
+字符被删除、连续非法字符折叠成一个 `.`，实测会变成 `NFC.-5.0MB-.apk` 这种无法辨认的名字。
+脚本已处理：上传时自动改成 `NFCTool-<tag>-arm64.apk` 与 `NFCTool-<tag>-noshrink-compare.apk`。
+网页手动上传的话，请先自己把文件重命名成英文名。
+
 ## 4. 发布后检查
 
 - `https://github.com/lichuang07/NFCTool` 能看到 README 与源码
