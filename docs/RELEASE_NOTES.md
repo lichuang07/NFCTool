@@ -35,7 +35,3 @@ Android NFC 标签读写工具箱（`com.nfctool.app`），Jetpack Compose 单 A
 
 单元测试 255 通过 / 0 失败 · lint 0 error · APK 四项校验通过
 （v2+v3 签名、zipalign、zip 完整性、无 `$` 内部资源）。
-
-### 已知未验证
-
-NFC 读写尚未在实体标签上逐项实测 —— 这是目前最该补上的一环。
