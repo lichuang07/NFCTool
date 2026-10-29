@@ -1,0 +1,996 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  中文资源（默认语言）。
+
+  语言切换机制见 core/i18n/LocalePref.kt：
+  - 默认（跟随系统）：系统是中文时走本文件，其他语言走 values-en/
+  - 用户在设置里显式选择「中文 / English」时，由 LocalePref 包装 Context 强制指定
+-->
+<resources>
+
+    <!-- ============ 应用与底部导航 ============ -->
+    <string name="app_name">NFC 工具箱</string>
+    <string name="tab_read">读取</string>
+    <string name="tab_write">写入</string>
+    <string name="tab_console">控制台</string>
+    <string name="tab_history">历史</string>
+    <string name="tab_settings">设置</string>
+
+    <!-- ============ 通用 ============ -->
+    <string name="action_ok">知道了</string>
+    <string name="action_cancel">取消</string>
+    <string name="action_confirm">确认执行</string>
+    <string name="action_clear">清空</string>
+    <string name="action_copy_uid">复制 UID</string>
+    <string name="action_delete">删除</string>
+    <string name="action_fill">填入</string>
+    <string name="action_enabled">已开启</string>
+    <string name="action_disabled">已关闭</string>
+    <string name="action_yes">是</string>
+    <string name="action_no">否</string>
+    <string name="action_unknown">未知</string>
+    <string name="action_back">返回</string>
+    <string name="action_detecting">待检测</string>
+    <string name="unit_bytes">%1$d 字节</string>
+    <string name="unit_meters">%1$s 米</string>
+    <string name="toast_copied_uid">UID 已复制</string>
+
+    <!-- ============ 读取页 ============ -->
+    <string name="read_status_no_adapter">设备不支持 NFC</string>
+    <string name="read_status_disabled">NFC 已关闭</string>
+    <string name="read_status_ready">就绪</string>
+    <string name="read_status_online">在线</string>
+    <string name="read_status_offline">已关闭</string>
+    <string name="read_status_unavailable">不可用</string>
+    <string name="read_hero_idle_title">将标签贴近手机背面</string>
+    <string name="read_hero_idle_desc">支持 NDEF / MIFARE / Ultralight / ISO 15693 / FeliCa / ISO-DEP</string>
+    <string name="read_hero_busy_title">读取中…</string>
+    <string name="read_hero_busy_desc">正在解析卡片数据，请稍候</string>
+    <string name="read_hero_hastag_title">已检测到标签</string>
+    <string name="read_hero_hastag_desc">点击可重新扫描下一张标签</string>
+    <string name="read_hero_rescan">重新扫描</string>
+    <string name="read_warn_no_hw">当前设备没有 NFC 硬件，无法进行读写操作</string>
+    <string name="read_warn_nfc_off">NFC 已被关闭，请到系统设置中开启</string>
+    <string name="read_warn_intent_blocked">系统已禁止本应用接收标签事件，可前往默认应用设置开启</string>
+    <string name="read_waiting">等待扫描</string>
+    <string name="read_hint_ndef">读取/写入文本、链接、vCard、Smart Poster</string>
+    <string name="read_hint_mifare">分区读写、密钥认证、恢复出厂</string>
+    <string name="read_hint_ultralight">逐页读写、OTP 永久锁定</string>
+    <string name="read_hint_iso15693">块读写、永久锁定</string>
+    <string name="read_hint_isodep">APDU 指令透传、银行卡信息读取</string>
+    <string name="read_hint_raw">任意协议帧的收发，适合高级用途</string>
+    <string name="read_section_tag_info">标签信息</string>
+    <string name="read_section_ndef">NDEF 数据</string>
+    <string name="read_section_ndef_unsupported">不支持</string>
+    <string name="read_section_ndef_empty">为空</string>
+    <string name="read_section_ndef_error">读取失败</string>
+    <string name="read_section_capability">设备能力</string>
+    <string name="read_section_block">块级数据</string>
+    <string name="read_section_block_trailing">原始内存内容</string>
+    <string name="read_ndef_unsupported_note">该标签不包含 NDEF 数据区，可按下方技术信息做块级读写</string>
+    <string name="read_ndef_empty_note">标签支持 NDEF 但内容区为空（空白标签），可在「写入」页先格式化再写入</string>
+    <string name="read_ndef_read_failed">NDEF 读取失败</string>
+    <string name="read_ndef_empty_msg">NDEF 消息为空，标签上没有任何记录</string>
+    <string name="read_ndef_records_count">%1$d 条记录 · %2$d 字节</string>
+    <string name="read_label_uid">UID</string>
+    <string name="read_label_uid_len">UID 长度</string>
+    <string name="read_label_uid_reversed">反向 UID</string>
+    <string name="read_label_capacity">容量</string>
+    <string name="read_label_sectors_blocks">扇区 / 块</string>
+    <string name="read_label_total_pages">总页数</string>
+    <string name="read_label_user_pages">用户页</string>
+    <string name="read_label_ndef_capacity">NDEF 容量</string>
+    <string name="read_label_writable">可写</string>
+    <string name="read_writable_yes">是</string>
+    <string name="read_writable_no_locked">否（已锁定）</string>
+    <string name="read_label_protocol">传输协议</string>
+    <string name="read_label_hist_bytes">历史字节</string>
+    <string name="read_label_supported_tech">支持的技术</string>
+    <string name="read_label_raw_tech_list">系统原始技术列表</string>
+    <string name="read_label_text">文本内容</string>
+    <string name="read_label_uri">链接地址</string>
+    <string name="read_label_mime">MIME 类型</string>
+    <string name="read_label_tnf">TNF</string>
+    <string name="read_label_type_bytes">type 字节</string>
+    <string name="read_label_record_id">记录 ID</string>
+    <string name="read_label_raw_data">原始数据</string>
+    <string name="read_block_title">读取块数据</string>
+    <string name="read_block_desc">MIFARE Classic 按扇区读取（默认密钥，失败扇区会跳过）；Ultralight 读取全部用户页</string>
+    <string name="read_block_mifare">MIFARE Classic · %1$d 块</string>
+    <string name="read_block_ultralight">MIFARE Ultralight · %1$d 页</string>
+    <string name="read_block_block_n">块 %1$d</string>
+    <string name="read_block_page_n">页 %1$d</string>
+    <string name="read_export_title">导出数据</string>
+    <string name="read_export_desc">把当前标签的 UID、NDEF 内容与数据块导出为文件</string>
+    <string name="read_export_json">导出 JSON</string>
+    <string name="read_export_text">导出文本</string>
+    <string name="read_export_done_title">导出完成</string>
+    <string name="read_export_fail_title">导出失败</string>
+    <string name="read_dump_done_title">读取完成</string>
+    <string name="read_dump_fail_title">读取失败</string>
+    <string name="read_cap_secure_nfc">Secure NFC</string>
+    <string name="read_cap_observe">观察模式</string>
+    <string name="read_cap_reader_option">Reader 选项</string>
+    <string name="read_cap_antenna">天线位置</string>
+    <string name="read_cap_tag_intent">标签事件授权</string>
+    <string name="read_cap_not_supported">设备不支持</string>
+    <string name="read_cap_enabled">已启用</string>
+    <string name="read_cap_supported_off">已支持，未启用</string>
+    <string name="read_cap_can_enable">可启用</string>
+    <string name="read_cap_allowed">已允许</string>
+    <string name="read_cap_blocked">被系统禁止</string>
+
+    <!-- ============ 写入目录页 ============ -->
+    <string name="write_subtitle_last">上次读取：%1$s · 选择要写入的内容类型</string>
+    <string name="write_subtitle_idle">选择要写入的内容类型，点写入后贴近标签即可</string>
+    <string name="write_no_preread_title">写入无需预先读卡</string>
+    <string name="write_no_preread_desc">选好类型后点击「写入」，应用会提示你将标签靠近手机，检测到标签的瞬间自动完成写入</string>
+    <string name="write_no_ndef_title">该标签不支持 NDEF</string>
+    <string name="write_no_ndef_desc">只能使用下方的存储技术写入项（块 / 页级读写）</string>
+    <string name="write_group_count">%1$d 项</string>
+    <string name="write_entry_tech_required">需要标签支持：%1$s</string>
+
+    <!-- ============ 写入详情页（共用） ============ -->
+    <string name="write_detail_unknown_type">未知的写入类型</string>
+    <string name="write_result_ok">操作成功</string>
+    <string name="write_result_fail">操作失败</string>
+    <string name="write_detail_no_preread_title">写入无需预先读卡</string>
+    <string name="write_detail_no_preread_desc">点击下方「写入」后，把 NFC 标签靠近手机即可自动完成</string>
+    <string name="write_detail_last_read">上次读取：%1$s</string>
+    <string name="write_detail_last_read_ref">UID %1$s · NDEF %2$d 字节 · 仅供参考，写入以实际贴近的标签为准</string>
+    <string name="write_detail_last_read_blank">上次读取：%1$s（空白标签）</string>
+    <string name="write_detail_last_read_blank_ref">UID %1$s · 仅供参考，写入时会先格式化为 NDEF</string>
+    <string name="write_detail_last_read_locked">上次读取：%1$s</string>
+    <string name="write_detail_last_read_locked_ref">该标签 NDEF 区不可写 · 仅供参考，换一张可写标签即可</string>
+    <string name="write_hint_locked">提示：上次读取的标签 NDEF 区不可写（可能已锁定）。写入时不限定标签，换一张可写标签再试即可</string>
+
+    <!-- ============ 表单：纯文本 ============ -->
+    <string name="write_text_label">文本内容</string>
+    <string name="write_text_placeholder">要写入标签的文字内容</string>
+    <string name="write_text_button">写入文本</string>
+
+    <!-- ============ 表单：链接 ============ -->
+    <string name="write_uri_label">链接地址</string>
+    <string name="write_uri_title_label">网页标题（可选）</string>
+    <string name="write_uri_title_placeholder">填写标题可写成智能海报</string>
+    <string name="write_uri_button">写入链接</string>
+    <string name="write_uri_smartposter_button">写成智能海报</string>
+    <string name="write_uri_prefilled_title">已从浏览器分享预填网页标题</string>
+
+    <!-- ============ 表单：地理位置 ============ -->
+    <string name="write_geo_hint">写入 geo: URI（RFC 5870），安卓与 iOS 碰一下都会直接唤起地图并定位</string>
+    <string name="write_geo_prefilled">已从%1$s预填</string>
+    <string name="write_geo_coord_system">坐标系 %1$s（geo: URI 按 WGS-84 解释，偏置换算需自行处理）</string>
+    <string name="write_geo_lat">纬度</string>
+    <string name="write_geo_lat_error">纬度需在 -90 到 90 之间</string>
+    <string name="write_geo_lon">经度</string>
+    <string name="write_geo_lon_error">经度需在 -180 到 180 之间</string>
+    <string name="write_geo_label">位置名称</string>
+    <string name="write_geo_label_ph">天安门</string>
+    <string name="write_geo_alt">海拔（米，可选）</string>
+    <string name="write_geo_unc">定位精度（米，可选）</string>
+    <string name="write_geo_zoom">缩放级别（可选）</string>
+    <string name="write_geo_button">写入地理位置</string>
+
+    <!-- ============ 表单：图片 ============ -->
+    <string name="write_image_hint">图片会自动压缩到标签容量以内。标签容量很小（NTAG213 仅 137 字节），写入的是压缩后的低分辨率版本</string>
+    <string name="write_image_empty">尚未选择图片。可从相册「分享」到此应用，或在此手动粘贴图片的十六进制数据</string>
+    <string name="write_image_data_label">图片数据（十六进制，可选）</string>
+    <string name="write_image_load">载入图片数据</string>
+    <string name="write_image_parse_fail">图片数据解析失败，请检查十六进制格式</string>
+    <string name="write_image_stat_original">原始大小</string>
+    <string name="write_image_stat_compressed">压缩后</string>
+    <string name="write_image_stat_dimension">尺寸</string>
+    <string name="write_image_stat_format">格式</string>
+    <string name="write_image_stat_capacity">标签容量</string>
+    <string name="write_image_capacity_pending">写入时检测</string>
+    <string name="write_image_over_capacity">压缩后仍超出容量 %1$d / %2$d 字节，无法写入。建议改用二维码（URL 方式）承载更多信息</string>
+    <string name="write_image_ratio">压缩比约 %1$s 倍，可写入</string>
+    <string name="write_image_auto">点击写入后按标签实际容量自动压缩，放不下会给出明确提示</string>
+    <string name="write_image_button">写入图片</string>
+
+    <!-- ============ 表单：二维码 ============ -->
+    <string name="write_qr_hint">把网址或任意文本转成二维码写入标签。标签容量小，可选择只写内容（最省空间）或只写二维码图</string>
+    <string name="write_qr_content">二维码内容</string>
+    <string name="write_qr_mode">写入模式</string>
+    <string name="write_qr_mode_both">内容+码</string>
+    <string name="write_qr_mode_content">仅内容</string>
+    <string name="write_qr_mode_image">仅二维码</string>
+    <string name="write_qr_mode_content_desc">只写原始内容，不写二维码图。占用最小，碰一下直接打开链接或显示文字</string>
+    <string name="write_qr_mode_image_desc">只写二维码图，不写原始内容。内容通过扫码获得，适合内容很长时</string>
+    <string name="write_qr_mode_both_desc">同时写原始内容与二维码图。占用较大，但两种用法都成立</string>
+    <string name="write_qr_tip">提示：真实二维码的 1-bit PNG 约 200~320 字节，NTAG213（137 字节）放不下，此时请选「仅内容」模式</string>
+    <string name="write_qr_preview_hint">输入内容后这里会实时显示二维码预览</string>
+    <string name="write_qr_too_long">内容过长，无法编码为二维码，请缩短内容</string>
+    <string name="write_qr_stat_content_len">内容长度</string>
+    <string name="write_qr_stat_version">二维码版本</string>
+    <string name="write_qr_version_value">版本 %1$s</string>
+    <string name="write_qr_stat_capacity">标签容量</string>
+    <string name="write_qr_capacity_unknown">未知</string>
+    <string name="write_qr_stat_estimated">预计写入</string>
+    <string name="write_qr_err_content_over">内容 %1$d 字节超出容量 %2$d 字节，请缩短内容</string>
+    <string name="write_qr_err_qr_over">二维码图 %1$d 字节超出容量 %2$d 字节。写入时会自动缩小模块；若仍放不下请缩短内容或改用「仅内容」模式</string>
+    <string name="write_qr_err_total_over">预计 %1$d 字节超出容量 %2$d 字节。写入时会自动缩小二维码；若仍放不下请改用「仅内容」模式</string>
+    <string name="write_qr_ok_content">占用很小，标签放得下；碰一下直接打开，无需扫码</string>
+    <string name="write_qr_ok_total">占用在容量内，可写入</string>
+    <string name="write_qr_button_content">写入内容</string>
+    <string name="write_qr_button_image">写入二维码图</string>
+    <string name="write_qr_button_both">写入内容与二维码</string>
+    <string name="write_qr_preview">二维码预览</string>
+    <string name="write_qr_preview_fail">预览生成失败</string>
+
+    <!-- ============ 表单：蓝牙配对 ============ -->
+    <string name="write_bt_hint">写入蓝牙 OOB 配对记录。注意：安卓系统本身不解析这类记录，需厂商 App 注册了对应 MIME 类型才会响应；iPhone 完全不认</string>
+    <string name="write_bt_protocol">协议类型</string>
+    <string name="write_bt_protocol_le">LE 低功耗蓝牙</string>
+    <string name="write_bt_protocol_bredr">BR/EDR 经典蓝牙</string>
+    <string name="write_bt_address">设备地址</string>
+    <string name="write_bt_address_error">地址格式应为 6 字节十六进制，如 AA:BB:CC:DD:EE:FF</string>
+    <string name="write_bt_little_endian">写入时按规范以小端序存放（BB 最先），这是最容易搞反的地方</string>
+    <string name="write_bt_name">设备名（可选）</string>
+    <string name="write_bt_button">写入蓝牙配对</string>
+
+    <!-- ============ 表单：Wi-Fi 配网 ============ -->
+    <string name="write_wifi_hint">写入后安卓手机碰一下标签即可弹出连接提示；iPhone 只会通知，需手动确认</string>
+    <string name="write_wifi_ssid">网络名称 (SSID)</string>
+    <string name="write_wifi_security">安全类型</string>
+    <string name="write_wifi_open">开放</string>
+    <string name="write_wifi_password">密码</string>
+    <string name="write_wifi_password_ph">至少 8 位</string>
+    <string name="write_wifi_hidden">隐藏网络（SSID 不广播）</string>
+    <string name="write_wifi_button">写入 Wi-Fi 配网</string>
+
+    <!-- ============ 表单：电子名片 vCard ============ -->
+    <string name="write_vcard_hint">生成标准 vCard 3.0，碰一下后可导入系统通讯录</string>
+    <string name="write_vcard_prefilled">已从分享的联系人名片预填</string>
+    <string name="write_vcard_name">姓名</string>
+    <string name="write_vcard_name_ph">张三</string>
+    <string name="write_vcard_phone">手机号</string>
+    <string name="write_vcard_email">邮箱</string>
+    <string name="write_vcard_org">单位</string>
+    <string name="write_vcard_org_ph">某公司</string>
+    <string name="write_vcard_title">职位</string>
+    <string name="write_vcard_title_ph">工程师</string>
+    <string name="write_vcard_url">个人主页</string>
+    <string name="write_vcard_address">地址</string>
+    <string name="write_vcard_address_ph">上海市浦东新区</string>
+    <string name="write_vcard_button">写入电子名片</string>
+
+    <!-- ============ 表单：MECARD ============ -->
+    <string name="write_mecard_hint">MECARD 比 vCard 更省空间，日系手机原生识别；安卓需第三方应用支持</string>
+    <string name="write_mecard_name">姓名</string>
+    <string name="write_mecard_name_ph">张三</string>
+    <string name="write_mecard_phone">手机号</string>
+    <string name="write_mecard_email">邮箱</string>
+    <string name="write_mecard_url">个人主页</string>
+    <string name="write_mecard_address">地址</string>
+    <string name="write_mecard_address_ph">上海市浦东新区</string>
+    <string name="write_mecard_note">备注</string>
+    <string name="write_mecard_note_ph">名片备注</string>
+    <string name="write_mecard_button">写入 MECARD</string>
+
+    <!-- ============ 表单：日历事件 ============ -->
+    <string name="write_vcal_hint">生成 VCALENDAR 2.0 日程，碰一下可加入手机日历</string>
+    <string name="write_vcal_summary">事件标题</string>
+    <string name="write_vcal_summary_ph">周会</string>
+    <string name="write_vcal_start">开始时间</string>
+    <string name="write_vcal_end">结束时间</string>
+    <string name="write_vcal_location">地点</string>
+    <string name="write_vcal_location_ph">三号会议室</string>
+    <string name="write_vcal_desc">描述</string>
+    <string name="write_vcal_desc_ph">讨论 NFC 方案</string>
+    <string name="write_vcal_button">写入日历事件</string>
+
+    <!-- ============ 表单：智能海报 ============ -->
+    <string name="write_sp_hint">写入一条 S 记录 + 若干 U 记录；系统会把标题展示为一个可点的链接组</string>
+    <string name="write_sp_title">标题</string>
+    <string name="write_sp_title_ph">产品官网</string>
+    <string name="write_sp_links">链接（每行一个）</string>
+    <string name="write_sp_lang">语言码</string>
+    <string name="write_sp_lang_zh">中文</string>
+    <string name="write_sp_lang_en">English</string>
+    <string name="write_sp_lang_ja">日本語</string>
+    <string name="write_sp_button">写入智能海报</string>
+
+    <!-- ============ 表单：应用唤起 ============ -->
+    <string name="write_aar_hint">Android 读到 AAR 会强制把事件派发给该应用；未安装则跳转到应用商店</string>
+    <string name="write_aar_pkg">应用包名</string>
+    <string name="write_aar_pkg_hint">包名格式：至少含一个点，如 com.example.app。可用「应用唤起」测试常见包名。</string>
+    <string name="write_aar_button">写入应用唤起记录</string>
+
+    <!-- ============ 表单：连接移交 ============ -->
+    <string name="write_ho_hint">NFC Forum 连接移交：碰一下后把「改用哪种无线技术继续」的选择权交给对端</string>
+    <string name="write_ho_type">记录类型</string>
+    <string name="write_ho_type_hr">Hr 选择请求</string>
+    <string name="write_ho_type_hs">Hs 选择应答</string>
+    <string name="write_ho_carrier">载体类型</string>
+    <string name="write_ho_carrier_data">载体数据</string>
+    <string name="write_ho_button">写入连接移交</string>
+
+    <!-- ============ 表单：AID ============ -->
+    <string name="write_aid_hint">AID 用于 Type 4 标签标识应用；格式为十六进制字节串</string>
+    <string name="write_aid_label">AID（十六进制）</string>
+    <string name="write_aid_example">示例：A000000003100000 为支付应用 AID（请勿用于生产标签）。</string>
+    <string name="write_aid_button">写入 AID</string>
+
+    <!-- ============ 表单：自定义 MIME ============ -->
+    <string name="write_mime_hint">任意 MIME 类型；系统按类型分发给已注册该类型的应用</string>
+    <string name="write_mime_type">MIME 类型</string>
+    <string name="write_mime_body">内容</string>
+    <string name="write_mime_body_ph">内容</string>
+    <string name="write_mime_button">写入 MIME</string>
+
+    <!-- ============ 表单：外部类型 ============ -->
+    <string name="write_ext_hint">外部类型记录（TNF 0x04），Android 会拼成 domain:type 作为完整类型名</string>
+    <string name="write_ext_domain">域名</string>
+    <string name="write_ext_type">类型</string>
+    <string name="write_ext_body">内容</string>
+    <string name="write_ext_body_ph">内容</string>
+    <string name="write_ext_button">写入外部类型</string>
+
+    <!-- ============ 表单：存储技术 ============ -->
+    <string name="write_ms_sectors">扇区</string>
+    <string name="write_ms_blocks">块总数</string>
+    <string name="write_ms_key_a">认证密钥 (Key A)</string>
+    <string name="write_ms_block_no">块号</string>
+    <string name="write_ms_block_data">块数据 (16 字节)</string>
+    <string name="write_ms_write_block">写入块</string>
+    <string name="write_ms_block_size_err">块数据必须为 16 字节，当前为 %1$d 字节</string>
+    <string name="write_ms_read_all">读取全部块</string>
+    <string name="write_ms_restore">恢复出厂</string>
+    <string name="write_ms_restore_title">确认恢复出厂设置？</string>
+    <string name="write_ms_restore_msg">恢复出厂设置会把 MIFARE Classic 卡的所有扇区写回默认密钥与标准 MAD 数据，需要知道原始密钥才能还原。</string>
+    <string name="write_ms_user_pages">用户页数</string>
+    <string name="write_ms_page_no">页号</string>
+    <string name="write_ms_page_data">页数据 (4 字节)</string>
+    <string name="write_ms_write_page">写入页</string>
+    <string name="write_ms_page_size_err">页数据必须为 4 字节，当前为 %1$d 字节</string>
+    <string name="write_iso_block_size_err">块数据必须为 4 字节，当前为 %1$d 字节</string>
+    <string name="write_ms_read_all_pages">读取全部用户页</string>
+    <string name="write_iso_hint">NFC-V 采用块寻址；每块 4 字节，需按标签实际块数访问</string>
+    <string name="write_iso_block_data">块数据 (4 字节)</string>
+    <string name="write_desfire_hint">DESFire 通过 APDU 直通操作，可读文件列表、写文件、切换密钥</string>
+    <string name="write_desfire_title">DESFire 卡片信息</string>
+    <string name="write_desfire_desc">通过 ISO 7816-4 APDU 与卡片通信。未认证时仅能读取版本与文件列表，读取文件内容需对应密钥。</string>
+    <string name="write_desfire_read">读取卡片信息</string>
+    <string name="write_desfire_version">版本</string>
+    <string name="write_desfire_read_failed">读取失败</string>
+    <string name="write_desfire_keys">密钥配置</string>
+    <string name="write_desfire_file_count">文件数量</string>
+    <string name="write_desfire_file_id">文件 ID</string>
+    <string name="write_desfire_read_content">读取文件内容</string>
+    <string name="write_desfire_read_file">读取文件</string>
+    <string name="write_desfire_fileid_err">文件 ID 格式不正确，请填 2 位十六进制</string>
+    <string name="write_format_title">格式化标签</string>
+    <string name="write_format_desc">清除标签内所有内容。格式化会写入一条空白消息，但标签内容仍可被再次覆盖写入。</string>
+    <string name="write_format_blank">格式化为空白标签</string>
+    <string name="write_format_button">格式化标签</string>
+    <string name="write_format_confirm_title">确认格式化标签？</string>
+    <string name="write_format_confirm_msg">格式化会清除标签内的所有数据。此操作不可撤销。</string>
+    <string name="write_restore_title">恢复出厂设置</string>
+    <string name="write_restore_desc">把所有扇区写回默认密钥与标准 MAD 数据。若原始密钥不是默认值，恢复后将无法再访问。</string>
+    <string name="write_restore_button">恢复出厂设置</string>
+
+    <!-- ============ 等待标签弹窗 ============ -->
+    <string name="await_title_waiting">等待标签</string>
+    <string name="await_title_writing">正在写入</string>
+    <string name="await_msg_writing">正在写入%1$s，请保持标签紧贴手机背面…</string>
+    <string name="await_msg_waiting_label">将 NFC 标签靠近手机背面，检测到后立即执行%1$s</string>
+    <string name="await_msg_waiting">将 NFC 标签靠近手机背面，检测到后立即写入</string>
+    <string name="await_note">写入过程中请勿移开标签，也不要锁屏</string>
+
+    <!-- ============ 控制台页 ============ -->
+    <string name="console_subtitle">直接与卡片通信，可用于读取银行卡信息、调试门禁卡、执行任意协议指令</string>
+    <string name="console_mode_raw">原始指令</string>
+    <string name="console_mode_apdu">APDU</string>
+    <string name="console_select_aid">SELECT AID</string>
+    <string name="console_aid_ph">A0000000031010</string>
+    <string name="console_select_aid_button">选择 AID</string>
+    <string name="console_command_label">指令内容 (十六进制)</string>
+    <string name="console_send_raw">发送原始指令</string>
+    <string name="console_send_apdu">发送 APDU</string>
+    <string name="console_await_hint">点「发送」后把标签靠近手机，检测到即执行指令</string>
+    <string name="console_quick">常用指令</string>
+    <string name="console_quick_read_ndef">读取 NDEF 内容</string>
+    <string name="console_quick_bank_aid">选择银行卡 AID</string>
+    <string name="console_quick_get_response">读取响应数据</string>
+    <string name="console_quick_get_data">获取卡片数据</string>
+    <string name="console_log">通信日志</string>
+    <string name="console_log_empty">暂无通信记录</string>
+    <string name="console_result_title">执行结果</string>
+
+    <!-- ============ 历史页 ============ -->
+    <string name="history_count">最近 %1$d 条记录</string>
+    <string name="history_empty_title">还没有扫描记录</string>
+    <string name="history_empty_desc">每次读取标签后会自动记录在这里</string>
+    <string name="history_clear_title">清空历史记录？</string>
+    <string name="history_clear_msg">将删除全部 %1$d 条扫描记录，此操作不可撤销。</string>
+    <string name="history_clear_button">清空</string>
+
+    <!-- ============ 设置页 ============ -->
+    <string name="settings_section_appearance">外观</string>
+    <string name="settings_section_appearance_trailing">强调色</string>
+    <string name="settings_theme_mode">主题模式</string>
+    <string name="settings_theme_dark">深色</string>
+    <string name="settings_theme_light">浅色</string>
+    <string name="settings_theme_system">跟随系统</string>
+    <string name="settings_accent">强调色</string>
+    <string name="settings_section_scan">扫描行为</string>
+    <string name="settings_vibrate">扫描时震动</string>
+    <string name="settings_vibrate_desc">检测到标签时给出触感反馈</string>
+    <string name="settings_skip_ndef">读取时跳过 NDEF 预检查</string>
+    <string name="settings_skip_ndef_desc">提速约 500ms，但无法读取 NDEF 内容</string>
+    <string name="settings_poll_nfc_b">轮询 NFC-B</string>
+    <string name="settings_poll_nfc_b_desc">关闭可减少干扰并略微降低功耗</string>
+    <string name="settings_background_scan">后台读卡</string>
+    <string name="settings_background_scan_desc">应用切到后台后继续扫描标签（需在系统默认应用中授权接收标签）</string>
+    <string name="settings_export_secrets">导出敏感字段</string>
+    <string name="settings_export_secrets_desc">导出时原样包含 Wi-Fi 密码等内容，默认脱敏</string>
+    <string name="settings_section_hce">主机卡模拟</string>
+    <string name="settings_section_hce_trailing">HCE</string>
+    <string name="settings_hce_unsupported">当前设备不支持 HCE 主机卡模拟</string>
+    <string name="settings_hce_supported">设备支持</string>
+    <string name="settings_hce_aids">已注册 AID</string>
+    <string name="settings_hce_aids_none">未注册</string>
+    <string name="settings_hce_default">默认服务</string>
+    <string name="settings_hce_default_this">本应用</string>
+    <string name="settings_hce_default_other">其他应用 / 未指定</string>
+    <string name="settings_hce_desc">让本机手机扮演一张 NFC 卡片。读卡器靠近时会把 APDU 指令发给手机，本应用负责响应。注册的是厂商私有 AID，不参与任何支付流程。</string>
+    <string name="settings_hce_open">系统卡模拟设置</string>
+    <string name="settings_hce_refresh">刷新状态</string>
+    <string name="settings_section_device">设备信息</string>
+    <string name="settings_nfc_adapter">NFC 适配器</string>
+    <string name="settings_nfc_present">存在</string>
+    <string name="settings_nfc_absent">不存在</string>
+    <string name="settings_nfc_state">NFC 状态</string>
+    <string name="settings_nfc_on">已开启</string>
+    <string name="settings_nfc_off">已关闭</string>
+    <string name="settings_secure_nfc">Secure NFC</string>
+    <string name="settings_observe_mode">观察模式</string>
+    <string name="settings_reader_option">Reader 选项</string>
+    <string name="settings_supported">支持</string>
+    <string name="settings_unsupported">不支持</string>
+    <string name="settings_antenna">天线位置</string>
+    <string name="settings_antenna_unknown">未知</string>
+    <string name="settings_target_sdk">目标 SDK</string>
+    <string name="settings_min_sdk">最低支持</string>
+    <string name="settings_min_sdk_value">Android 7.0 (API 24)</string>
+    <string name="settings_section_about">关于</string>
+    <string name="settings_version">应用版本</string>
+    <string name="settings_build">构建</string>
+    <string name="settings_build_value">NFCTool v1</string>
+    <string name="settings_supported_tags">支持的标签类型</string>
+    <string name="settings_supported_tags_value">NDEF · MIFARE Classic · Ultralight · DESFire · ISO 15693 · FeliCa · ISO-DEP</string>
+    <string name="settings_about_button">查看说明</string>
+    <string name="settings_about_title">关于 NFC 工具箱</string>
+    <string name="settings_about_body">本应用基于 Android 原生 NFC 框架（NfcAdapter / android.nfc.tech）实现。\n\n读取能力：\n• NDEF 文本、URI、MIME、Smart Poster 记录\n• MIFARE Classic 分区读写、密钥认证、恢复出厂\n• MIFARE Ultralight 逐页读写\n• ISO 15693 块读写\n• ISO 7816 APDU 透传（自动处理 61xx 续传）\n• FeliCa、NFC-A/B/F/V 原始协议帧\n\n写入能力：\n• NDEF 内容写入与格式化\n• MIFARE Classic 单块写入\n• Ultralight 单页写入\n• ISO 15693 块写入\n• 任意原始指令透传\n\n注意：部分卡片出厂即锁定或需要认证密钥，写入能力会受卡片自身权限限制。</string>
+    <string name="settings_language">语言</string>
+    <string name="settings_language_system">跟随系统</string>
+    <string name="settings_language_zh">中文</string>
+    <string name="settings_language_en">English</string>
+
+    <!-- ============ 强调色名称 ============ -->
+    <string name="accent_nebula">星云紫</string>
+    <string name="accent_aurora">极光青</string>
+    <string name="accent_neon_pink">霓虹粉</string>
+    <string name="accent_iris">鸢尾紫</string>
+    <string name="accent_lava">熔岩金</string>
+    <string name="accent_data_green">数据绿</string>
+
+    <!-- ============ 卡片类型 ============ -->
+    <string name="card_ndef_generic_name">NDEF 标准标签</string>
+    <string name="card_ndef_generic_category">通用</string>
+    <string name="card_ndef_generic_summary">已格式化的 NDEF 标签，可存文本/链接</string>
+    <string name="card_ndef_empty_name">空白标签</string>
+    <string name="card_ndef_empty_category">通用</string>
+    <string name="card_ndef_empty_summary">未格式化的空标签，可直接写入</string>
+    <string name="card_ntag213_name">NTAG213</string>
+    <string name="card_ntag213_category">NXP</string>
+    <string name="card_ntag213_summary">144 字节用户区，常见于门禁与标签</string>
+    <string name="card_ntag215_name">NTAG215</string>
+    <string name="card_ntag215_category">NXP</string>
+    <string name="card_ntag215_summary">504 字节用户区，支持多字节 NDEF</string>
+    <string name="card_ntag216_name">NTAG216</string>
+    <string name="card_ntag216_category">NXP</string>
+    <string name="card_ntag216_summary">888 字节用户区，容量最大</string>
+    <string name="card_ultralight_name">Ultralight</string>
+    <string name="card_ultralight_category">NXP</string>
+    <string name="card_ultralight_summary">Ultralight 系列轻量卡</string>
+    <string name="card_ultralight_c_name">Ultralight C</string>
+    <string name="card_ultralight_c_category">NXP</string>
+    <string name="card_ultralight_c_summary">支持 DES 认证的安全轻量卡</string>
+    <string name="card_mifare_classic_1k_name">MIFARE Classic 1K</string>
+    <string name="card_mifare_classic_1k_category">NXP</string>
+    <string name="card_mifare_classic_1k_summary">1KB 容量，16 扇区</string>
+    <string name="card_mifare_classic_4k_name">MIFARE Classic 4K</string>
+    <string name="card_mifare_classic_4k_category">NXP</string>
+    <string name="card_mifare_classic_4k_summary">4KB 容量，40 扇区</string>
+    <string name="card_mifare_plus_name">MIFARE Plus</string>
+    <string name="card_mifare_plus_category">NXP</string>
+    <string name="card_mifare_plus_summary">AES 加密的高级安全卡</string>
+    <string name="card_mifare_desfire_name">MIFARE DESFire</string>
+    <string name="card_mifare_desfire_category">NXP</string>
+    <string name="card_mifare_desfire_summary">基于 ISO 7816-4 的安全卡平台</string>
+    <string name="card_iso15693_name">ISO 15693 (NFC-V)</string>
+    <string name="card_iso15693_category">标准</string>
+    <string name="card_iso15693_summary">Vicinity 远距离卡，如校园卡</string>
+    <string name="card_felica_name">FeliCa</string>
+    <string name="card_felica_category">Sony</string>
+    <string name="card_felica_summary">日本交通系 IC 卡</string>
+    <string name="card_bank_name">银行卡 / 支付卡</string>
+    <string name="card_bank_category">支付</string>
+    <string name="card_bank_summary">EMV 支付卡，可读取交易信息</string>
+    <string name="card_civic_name">身份证 / 证件</string>
+    <string name="card_civic_category">政务</string>
+    <string name="card_civic_summary">居民身份证或电子证照</string>
+    <string name="card_access_name">门禁卡 / 考勤卡</string>
+    <string name="card_access_category">安防</string>
+    <string name="card_access_summary">常见的非接触式门禁凭证</string>
+    <string name="card_unknown_name">未识别卡片</string>
+    <string name="card_unknown_category">其他</string>
+    <string name="card_unknown_summary">无法识别具体型号，按通用方式处理</string>
+
+    <!-- ============ 标签技术 ============ -->
+    <string name="tech_ndef_name">NDEF</string>
+    <string name="tech_ndef_desc">NFC Forum 标准格式，可存文本、链接、vCard 等</string>
+    <string name="tech_ndef_formatable_name">NDEF 可格式化</string>
+    <string name="tech_ndef_formatable_desc">空白标签，写入前需先格式化为 NDEF</string>
+    <string name="tech_mifare_classic_name">MIFARE Classic</string>
+    <string name="tech_mifare_classic_desc">1K/4K 分区卡，需先认证 Key A/Key B</string>
+    <string name="tech_mifare_ultralight_name">MIFARE Ultralight</string>
+    <string name="tech_mifare_ultralight_desc">NTAG/UL 轻量卡，按 4 字节页读写</string>
+    <string name="tech_mifare_plus_name">MIFARE Plus</string>
+    <string name="tech_mifare_plus_desc">以 Classic 兼容模式访问，安全性更高</string>
+    <string name="tech_mifare_desfire_name">MIFARE DESFire</string>
+    <string name="tech_mifare_desfire_desc">需通过 APDU 命令与卡片会话通信</string>
+    <string name="tech_iso_dep_name">ISO 7816 (IsoDep)</string>
+    <string name="tech_iso_dep_desc">智能卡/银行卡标准，APDU 指令透传</string>
+    <string name="tech_nfc_a_name">NFC-A (ISO 14443-3)</string>
+    <string name="tech_nfc_a_desc">底层协议，可直接发送原始帧</string>
+    <string name="tech_nfc_b_name">NFC-B (ISO 14443-3)</string>
+    <string name="tech_nfc_b_desc">底层协议，可直接发送原始帧</string>
+    <string name="tech_nfc_f_name">NFC-F (JIS 6319-4)</string>
+    <string name="tech_nfc_f_desc">FeliCa 公交卡体系</string>
+    <string name="tech_nfc_v_name">NFC-V (ISO 15693)</string>
+    <string name="tech_nfc_v_desc">Vicinity 卡，块寻址读写</string>
+    <string name="tech_nfc_barcode_name">NFC 条码</string>
+    <string name="tech_nfc_barcode_desc">只读，Sony/Kovio 等条码标签</string>
+    <string name="tech_unknown_name">未知类型</string>
+    <string name="tech_unknown_desc">暂不支持的技术组合</string>
+
+    <!-- ============ NDEF 细分类型 ============ -->
+    <string name="ndef_kind_text">纯文本</string>
+    <string name="ndef_kind_uri">链接</string>
+    <string name="ndef_kind_geo">地理位置</string>
+    <string name="ndef_kind_wifi">Wi-Fi 配网</string>
+    <string name="ndef_kind_vcard">电子名片 vCard</string>
+    <string name="ndef_kind_mecard">电子名片 MECARD</string>
+    <string name="ndef_kind_vcalendar">日历事件</string>
+    <string name="ndef_kind_smart_poster">智能海报</string>
+    <string name="ndef_kind_android_app">应用唤起</string>
+    <string name="ndef_kind_handover">连接移交</string>
+    <string name="ndef_kind_bluetooth_oob">蓝牙配对</string>
+    <string name="ndef_kind_aid">AID 标识</string>
+    <string name="ndef_kind_mime">MIME 内容</string>
+    <string name="ndef_kind_external">外部类型</string>
+    <string name="ndef_kind_unknown">未知类型</string>
+
+    <!-- ============ NDEF 结构化字段名 ============ -->
+    <string name="detail_content">内容</string>
+    <string name="detail_address">地址</string>
+    <string name="detail_aid_bytes">AID 字节</string>
+    <string name="detail_aid_length">AID 长度</string>
+    <string name="detail_record_kind">记录种类</string>
+    <string name="detail_type4_app">NFC Forum Type 4 应用标识</string>
+    <string name="detail_mime_type">MIME 类型</string>
+    <string name="detail_payload_size">载荷大小</string>
+    <string name="detail_content_preview">内容预览</string>
+    <string name="detail_binary_preview">二进制预览</string>
+    <string name="detail_external_type">外部类型</string>
+    <string name="detail_domain">域</string>
+    <string name="detail_subtype">子类型</string>
+    <string name="detail_tnf">TNF</string>
+    <string name="detail_type_bytes">type 字节</string>
+    <string name="detail_latitude">纬度</string>
+    <string name="detail_longitude">经度</string>
+    <string name="detail_altitude">海拔</string>
+    <string name="detail_accuracy">精度</string>
+    <string name="detail_place_name">位置名称</string>
+    <string name="detail_zoom">缩放级别</string>
+    <string name="detail_uri">URI</string>
+    <string name="detail_bt_record_type">记录类型</string>
+    <string name="detail_bt_le">Bluetooth LE OOB</string>
+    <string name="detail_bt_bredr">Bluetooth BR/EDR OOB</string>
+    <string name="detail_device_address">设备地址</string>
+    <string name="detail_device_name">设备名</string>
+    <string name="detail_pairing_material">配对材料</string>
+    <string name="detail_pairing_ssp">含 SSP 校验值</string>
+    <string name="detail_network_name">网络名称</string>
+    <string name="detail_hidden_network">隐藏网络</string>
+    <string name="detail_auth_type">认证类型</string>
+    <string name="detail_password">密码</string>
+    <string name="detail_full_name">姓名</string>
+    <string name="detail_name_parts">姓 / 名</string>
+    <string name="detail_org">单位</string>
+    <string name="detail_job_title">职位</string>
+    <string name="detail_phone">电话</string>
+    <string name="detail_email">邮箱</string>
+    <string name="detail_url">网址</string>
+    <string name="detail_address_field">地址</string>
+    <string name="detail_note">备注</string>
+    <string name="detail_target_app">目标应用</string>
+    <string name="detail_aar_type">Android Application Record</string>
+    <string name="detail_event_title">标题</string>
+    <string name="detail_start">开始</string>
+    <string name="detail_end">结束</string>
+    <string name="detail_location">地点</string>
+    <string name="detail_organizer">组织者</string>
+    <string name="detail_description">描述</string>
+    <string name="detail_language">语言</string>
+    <string name="detail_ho_request">Handover Request（选择请求）</string>
+    <string name="detail_ho_select">Handover Select（选择应答）</string>
+    <string name="detail_version">版本</string>
+    <string name="detail_alt_carrier">可选链路</string>
+
+    <!-- ============ Wi-Fi 认证类型 ============ -->
+    <string name="wifi_auth_open">开放网络（无密码）</string>
+    <string name="wifi_auth_wpa_psk">WPA-PSK</string>
+    <string name="wifi_auth_wpa2_psk">WPA2-PSK</string>
+    <string name="wifi_auth_mixed">WPA/WPA2-PSK 混合</string>
+    <string name="wifi_auth_unknown">未知（0x%1$s）</string>
+
+    <!-- ============ 蓝牙 AD 类型名 ============ -->
+    <string name="bt_ad_complete_name">完整设备名</string>
+    <string name="bt_ad_le_address">LE 设备地址</string>
+    <string name="bt_ad_le_role">LE 角色</string>
+    <string name="bt_ad_le_appearance">LE 外观</string>
+    <string name="bt_ad_le_flags">LE 标志</string>
+    <string name="bt_ad_le_sc_confirm">LE SC 确认值</string>
+    <string name="bt_ad_le_sc_random">LE SC 随机值</string>
+    <string name="bt_ad_unknown">未知 (0x%1$s)</string>
+    <string name="bt_ad_slave_conn_interval">主从连接间隔</string>
+
+    <!-- ============ 移交载体说明 ============ -->
+    <string name="carrier_nfc_desc">设备标识字符串，如 00:11:22:33:44:55</string>
+    <string name="carrier_bt_desc">蓝牙设备地址，6 字节，如 01:02:03:04:05:06</string>
+    <string name="carrier_wifi_desc">Wi-Fi 设备标识，通常为一段字符串</string>
+    <string name="carrier_uri_desc">要移交的链接，如 https://example.com</string>
+    <string name="carrier_unknown">未知（0x%1$s）</string>
+
+    <!-- ============ TNF 名称 ============ -->
+    <string name="tnf_empty">Empty (0)</string>
+    <string name="tnf_well_known">Well-known (1)</string>
+    <string name="tnf_mime">MIME Media (2)</string>
+    <string name="tnf_absolute_uri">Absolute URI (3)</string>
+    <string name="tnf_external">External (4)</string>
+    <string name="tnf_unknown">Unknown (5)</string>
+    <string name="tnf_unchanged">Unchanged (6)</string>
+    <string name="tnf_number">TNF %1$d</string>
+
+    <!-- ============ APDU 状态字 ============ -->
+    <string name="sw_unknown">未知</string>
+    <string name="sw_success">成功</string>
+    <string name="sw_more_data">还有数据待取</string>
+    <string name="sw_warn_unchanged">警告：状态未改变</string>
+    <string name="sw_warn_auth">警告：认证失败</string>
+    <string name="sw_exec_error">执行错误</string>
+    <string name="sw_len_error">长度错误</string>
+    <string name="sw_not_allowed">指令不允许</string>
+    <string name="sw_param_error">参数错误</string>
+    <string name="sw_ins_unsupported">指令不支持</string>
+    <string name="sw_status">状态 %1$s/%2$s</string>
+
+    <string name="share_source_contact">联系人名片</string>
+    <string name="share_source_image">图片</string>
+    <string name="share_image_title">分享的图片</string>
+    <string name="share_source_amap">高德地图</string>
+    <string name="share_source_baidu">百度地图</string>
+    <string name="share_source_qq">腾讯地图</string>
+    <string name="share_source_google">Google 地图</string>
+    <string name="err_share_image_empty">分享的图片内容为空</string>
+    <string name="err_share_map_no_coord">缺少可解析的经纬度参数</string>
+    <string name="err_share_map_parse">%1$s 分享内容无法解析：%2$s</string>
+
+    <!-- ============ 核心层错误消息 ============ -->
+    <string name="err_tag_no_mifare_classic">该标签不支持 MIFARE Classic</string>
+    <string name="err_tag_no_isodep">该标签不支持 ISO-DEP</string>
+    <string name="err_iso15693_status">ISO 15693 卡片返回错误码 0x%1$s</string>
+    <string name="err_tag_no_nfcv">该标签不支持 NFC-V (ISO 15693)</string>
+    <string name="err_tag_no_mifare_ultralight">该标签不支持 MIFARE Ultralight</string>
+    <string name="err_ultralight_page_size">Ultralight 页大小必须为 %1$d 字节，当前为 %2$d</string>
+    <string name="err_tag_no_ndef">该标签不包含 NDEF 数据</string>
+    <string name="err_no_ndef_message">标签中没有 NDEF 消息</string>
+    <string name="err_tag_locked">标签被锁定，无法写入</string>
+    <string name="err_write_over_capacity">写入内容 %1$d 字节，超出标签 NDEF 容量 %2$d 字节</string>
+    <string name="err_tag_not_formattable">该标签既不支持 NDEF 也不支持格式化</string>
+    <string name="err_tag_left_range">标签已离开感应范围，写入结果无法确认</string>
+    <string name="err_write_readback_failed">写入后回读失败：%1$s</string>
+    <string name="err_comm_abnormal">通信异常</string>
+    <string name="err_write_readback_empty">写入后回读为空：标签可能已离开感应范围</string>
+    <string name="err_write_verify_failed">写入后回读校验失败：%1$s</string>
+    <string name="err_tag_not_formattable_short">该标签不支持格式化</string>
+    <string name="err_sector_auth_failed">扇区 %1$d 认证失败，密钥可能不正确</string>
+    <string name="err_read_block_failed">读取块 %1$d 失败，可能未认证或该块不可读</string>
+    <string name="err_mifare_block_size">MIFARE Classic 块大小必须为 16 字节，当前为 %1$d</string>
+    <string name="err_read_block_failed_short">读取块 %1$d 失败</string>
+    <string name="err_read_page_failed">读取页 %1$d 失败</string>
+    <string name="err_ndef_read_failed">NDEF 读取失败</string>
+    <string name="err_aid_empty">AID 不能为空</string>
+    <string name="err_aid_too_long">AID 长度不能超过 16 字节</string>
+    <string name="err_image_empty">图片内容为空</string>
+    <string name="err_qr_empty">二维码图片为空</string>
+    <string name="err_content_empty">内容为空</string>
+    <string name="err_desfire_version_len">版本响应长度异常：%1$d 字节</string>
+    <string name="err_desfire_write">写入失败：%1$s</string>
+    <string name="err_desfire_create_file">创建文件失败：%1$s</string>
+    <string name="err_desfire_delete_file">删除文件失败：%1$s</string>
+    <string name="err_desfire_key_empty">密钥配置响应为空</string>
+    <string name="err_desfire_version_unknown">未知(%1$s.%2$s)</string>
+    <string name="err_wifi_ssid_empty">SSID 不能为空</string>
+    <string name="err_wifi_password_len">Wi-Fi 密码最长 %1$d 字节，当前为 %2$d 字节</string>
+    <string name="err_wifi_password_required">加密网络必须提供密码</string>
+    <string name="err_bt_address_format">蓝牙地址格式不正确：%1$s</string>
+    <string name="err_bt_ad_too_long">AD 数据过长</string>
+    <string name="err_ho_no_carrier">至少需要一个移交载体</string>
+    <string name="err_ho_data_too_long">载体数据过长</string>
+    <string name="err_geo_lat_range">纬度必须在 -90 到 90 之间</string>
+    <string name="err_geo_lon_range">经度必须在 -180 到 180 之间</string>
+    <string name="err_hex_even">十六进制字符个数必须是偶数，当前为 %1$d</string>
+    <string name="err_hex_invalid">包含非十六进制字符：%1$s</string>
+    <string name="err_need_read_first">请先读取一张标签</string>
+    <string name="err_read_failed">读取失败</string>
+    <string name="err_export_failed">导出失败</string>
+    <string name="err_no_raw_channel">该标签没有可用的原始通道</string>
+    <string name="err_command_empty">指令内容为空</string>
+    <string name="err_apdu_empty">APDU 内容为空</string>
+    <string name="err_tag_no_ndef_write">该标签不支持 NDEF，无法写入</string>
+    <string name="err_tag_no_ndef_image">该标签不支持 NDEF，无法写入图片</string>
+    <string name="err_qr_content_empty">二维码内容为空</string>
+    <string name="err_qr_encode_failed">内容过长，二维码无法编码（请缩短内容）</string>
+    <string name="err_qr_capacity">内容过长或二维码超出标签容量（请缩短内容或改用「仅内容」模式）</string>
+    <string name="err_image_decode">无法解析该图片格式</string>
+    <string name="err_image_capacity">图片压缩后仍有 %1$d 字节，超出标签容量 %2$d 字节</string>
+    <string name="err_share_parse">分享内容无法解析</string>
+    <string name="err_share_image">分享的图片无法读取</string>
+    <string name="err_share_file_empty">分享的文件内容为空或无法读取</string>
+    <string name="err_vcard_parse">vCard 格式无法解析，字段可能不完整</string>
+    <string name="err_vcal_summary_empty">事件标题不能为空</string>
+    <string name="err_geo_uri">geo: URI 格式无法识别或坐标超出范围</string>
+
+    <!-- ============ 成功消息 ============ -->
+    <string name="msg_write_ok">%1$s 成功</string>
+    <string name="msg_write_failed">%1$s 失败</string>
+    <string name="msg_write_failed_reason">%1$s 失败：%2$s</string>
+    <string name="msg_tag_detected">检测到标签 %1$s · %2$s</string>
+    <string name="msg_await_tag">等待贴近标签：%1$s</string>
+    <string name="msg_restored_sectors">已恢复 %1$d 个扇区</string>
+    <string name="msg_exported_json">已导出 JSON</string>
+    <string name="msg_exported_text">已导出文本</string>
+    <string name="msg_desfire_read">已读取 DESFire 信息</string>
+    <string name="msg_desfire_file">文件 0x%1$s：%2$s</string>
+    <string name="msg_dump_blocks">已读取 %1$d 个块</string>
+    <string name="msg_dump_pages">已读取 %1$d 页</string>
+    <string name="msg_raw_sent">已发送 %1$d 字节，收到 %2$d 字节响应</string>
+    <string name="msg_apdu_sent">已发送 %1$d 字节，状态字 %2$s</string>
+    <string name="msg_aid_selected">已选择\n%1$s</string>
+    <string name="msg_qr_raw_written">已写入原始内容（%1$d 字节）</string>
+    <string name="msg_qr_image_written">已写入二维码图片（%1$d 字节，模块 %2$dpx）</string>
+    <string name="msg_qr_both_written">已写入内容与二维码（%1$d 字节，模块 %2$dpx）</string>
+    <string name="msg_image_written">已写入 %1$d×%2$d 图片（%3$d 字节，原始 %4$d 字节）</string>
+
+    <!-- ============ 写入操作名 ============ -->
+    <string name="op_write_text">写入文本</string>
+    <string name="op_write_uri">写入链接</string>
+    <string name="op_write_mime">写入 MIME</string>
+    <string name="op_write_wifi">写入 Wi-Fi 配网</string>
+    <string name="op_write_vcard">写入电子名片</string>
+    <string name="op_write_mecard">写入 MECARD</string>
+    <string name="op_write_vcalendar">写入日历事件</string>
+    <string name="op_write_smartposter">写入智能海报</string>
+    <string name="op_write_handover">写入连接移交</string>
+    <string name="op_write_aid">写入 AID</string>
+    <string name="op_write_external">写入外部类型</string>
+    <string name="op_write_geo">写入地理位置</string>
+    <string name="op_write_bluetooth">写入蓝牙配对</string>
+    <string name="op_write_android_app">写入应用唤起记录</string>
+    <string name="op_write_qrcode">写入二维码</string>
+    <string name="op_write_image">写入图片</string>
+    <string name="op_format">格式化标签</string>
+    <string name="op_write_block">写入块 %1$d</string>
+    <string name="op_restore">恢复出厂设置</string>
+    <string name="op_write_page">写入页 %1$d</string>
+    <string name="op_send_command">发送指令</string>
+    <string name="op_send_apdu">发送 APDU</string>
+    <string name="op_select_aid">选择 AID</string>
+
+    <!-- ============ 写入项目录 ============ -->
+    <string name="we_text_title">纯文本</string>
+    <string name="we_text_summary">写一段文字，碰一下即可显示</string>
+    <string name="we_uri_title">链接</string>
+    <string name="we_uri_summary">打开一个网址或深链</string>
+    <string name="we_geo_title">地理位置</string>
+    <string name="we_geo_summary">写一组坐标，碰一下直接进地图</string>
+    <string name="we_wifi_title">Wi-Fi 配网</string>
+    <string name="we_wifi_summary">碰一下直接连无线网，安卓弹窗确认</string>
+    <string name="we_vcard_title">电子名片 vCard</string>
+    <string name="we_vcard_summary">标准名片格式，可导入系统通讯录</string>
+    <string name="we_mecard_title">电子名片 MECARD</string>
+    <string name="we_mecard_summary">紧凑格式，省空间，日系手机原生支持</string>
+    <string name="we_vcalendar_title">日历事件</string>
+    <string name="we_vcalendar_summary">写一条日程邀请到手机日历</string>
+    <string name="we_smartposter_title">智能海报</string>
+    <string name="we_smartposter_summary">带标题的复合记录，可挂多个链接</string>
+    <string name="we_image_title">图片</string>
+    <string name="we_image_summary">写入图片，自动压缩到标签容量以内</string>
+    <string name="we_qrcode_title">二维码</string>
+    <string name="we_qrcode_summary">把网址或文本转成二维码写入标签</string>
+    <string name="we_androidapp_title">应用唤起</string>
+    <string name="we_androidapp_summary">强制打开指定应用，未安装则进商店</string>
+    <string name="we_handover_title">连接移交</string>
+    <string name="we_handover_summary">NFC Forum Hr/Hs 移交记录</string>
+    <string name="we_bluetooth_title">蓝牙配对</string>
+    <string name="we_bluetooth_summary">写入蓝牙 OOB 配对记录</string>
+    <string name="we_aid_title">AID 标识</string>
+    <string name="we_aid_summary">Type 4 标签的应用标识</string>
+    <string name="we_mime_title">自定义 MIME</string>
+    <string name="we_mime_summary">任意 MIME 类型与内容</string>
+    <string name="we_external_title">外部类型</string>
+    <string name="we_external_summary">domain:type 形式的自定义记录</string>
+    <string name="we_mifareclassic_title">MIFARE Classic 块</string>
+    <string name="we_mifareclassic_summary">按扇区认证后读写数据块</string>
+    <string name="we_mifareultralight_title">MIFARE Ultralight 页</string>
+    <string name="we_mifareultralight_summary">按页号读写 4 字节用户数据</string>
+    <string name="we_iso15693_title">ISO 15693 块</string>
+    <string name="we_iso15693_summary">NFC-V 块寻址读写</string>
+    <string name="we_desfire_title">DESFire 高级操作</string>
+    <string name="we_desfire_summary">APDU 直通与文件管理</string>
+    <string name="we_format_title">格式化标签</string>
+    <string name="we_format_summary">清除全部内容并设为只读，不可撤销</string>
+    <string name="we_restoremifare_title">恢复出厂设置</string>
+    <string name="we_restoremifare_summary">把所有扇区写回默认密钥与标准 MAD</string>
+
+    <!-- ============ 写入分组 ============ -->
+    <string name="wg_basic">基础内容</string>
+    <string name="wg_contact">联系与日程</string>
+    <string name="wg_system">系统与协议</string>
+    <string name="wg_advanced">高级自定义</string>
+    <string name="wg_storage">存储技术</string>
+    <string name="wg_management">标签管理</string>
+
+    <!-- ============ HCE 与后台服务 ============ -->
+    <string name="hce_service_desc">NFC 工具箱 · 虚拟卡片</string>
+    <string name="hce_aid_group_desc">虚拟卡片（演示用）</string>
+    <string name="hce_card_label">NFC 工具箱</string>
+    <string name="bg_scan_channel">后台读卡</string>
+    <string name="bg_scan_desc">保持 NFC 扫描在后台运行</string>
+    <string name="bg_scan_title">NFC 工具箱 · 后台扫描已开启</string>
+    <string name="bg_scan_text">将标签贴近手机背面即可读取</string>
+    <string name="bg_scan_stopped">后台扫描已停止</string>
+
+    <!-- ============ 导出报告 ============ -->
+    <string name="export_header">=== NFC 标签导出 ===</string>
+    <string name="export_card_type">卡片类型 : %1$s（%2$s）</string>
+    <string name="export_card_summary">说明     : %1$s</string>
+    <string name="export_uid_reversed">反向 UID : %1$s</string>
+    <string name="export_techs">支持技术 : %1$s</string>
+    <string name="export_raw_techs">原始技术 : %1$s</string>
+    <string name="export_ndef_state">NDEF状态 : %1$s</string>
+    <string name="export_ndef_capacity">NDEF     : %1$d 字节，可写=%2$s</string>
+    <string name="export_ndef_blank">NDEF     : 空白标签，写入时将先格式化</string>
+    <string name="export_ndef_error">NDEF错误 : %1$s</string>
+    <string name="export_mifare">MIFARE   : %1$dKB，%2$d 扇区，%3$d 块</string>
+    <string name="export_ultralight">Ultralight : %1$d 页</string>
+    <string name="export_records_header">--- NDEF 记录 ---</string>
+    <string name="export_record_title">[%1$d] %2$s  (%3$d 字节)</string>
+    <string name="export_record_text">     文本 : %1$s</string>
+    <string name="export_record_uri">     链接 : %1$s</string>
+    <string name="export_record_mime">     MIME  : %1$s</string>
+    <string name="export_record_raw">     原始 : %1$s</string>
+    <string name="export_blocks_header">--- MIFARE 数据块 ---</string>
+    <string name="export_block">块 %1$d : %2$s</string>
+    <string name="export_share_title">导出标签数据</string>
+    <string name="export_cached">已缓存到 %1$s</string>
+    <string name="export_write_failed">写入缓存失败</string>
+
+    <!-- ============ 其他 ============ -->
+    <string name="antenna_builtin">机身内置</string>
+    <string name="antenna_pos_top">上</string>
+    <string name="antenna_pos_bottom">下</string>
+    <string name="antenna_pos_middle">中</string>
+    <string name="antenna_pos_left">左</string>
+    <string name="antenna_pos_right">右</string>
+    <string name="desfire_keys_summary">%1$d 个 AES 密钥</string>
+
+
+    <!-- ================= 复制标签（克隆） ================= -->
+    <string name="clone_title">复制标签</string>
+    <string name="clone_intro">把一张标签上的内容原样复制到另一张空白标签上。</string>
+    <string name="clone_step_source">第 1 步 · 读取源标签</string>
+    <string name="clone_step_target">第 2 步 · 写入目标标签</string>
+    <string name="clone_source_hint">把要复制的源标签贴近手机背面的 NFC 感应区</string>
+    <string name="clone_ready_hint">源标签已读取。现在把空白标签贴近手机，再点击下方按钮写入。</string>
+    <string name="clone_write_hint">请把空白目标标签贴近手机的 NFC 感应区</string>
+    <string name="clone_btn_read">读取源标签</string>
+    <string name="clone_btn_write">写入目标标签</string>
+    <string name="clone_btn_reread">重新读取源标签</string>
+    <string name="clone_btn_again">再复制一张</string>
+    <string name="clone_btn_finish">完成</string>
+    <string name="clone_source_card">源标签</string>
+    <string name="clone_label_uid">UID</string>
+    <string name="clone_label_card">卡片类型</string>
+    <string name="clone_label_tech">技术</string>
+    <string name="clone_label_records">记录数</string>
+    <string name="clone_label_size">数据大小</string>
+    <string name="clone_copies">已复制 %1$d 张</string>
+    <string name="clone_none">还没有读取源标签</string>
+    <string name="clone_limits_title">关于复制的限制</string>
+    <string name="clone_limits_uid">UID：绝大多数标签的 UID 出厂即锁定、不可写入，本应用不提供改写能力。</string>
+    <string name="clone_limits_key">密钥 / 密码区：不属于 NDEF 内容，出于安全考虑不复制。</string>
+    <string name="clone_limits_type">目标标签容量不足时复制会失败，界面会提示所需与可用字节数。</string>
+    <string name="clone_entry_title">复制 / 克隆标签</string>
+    <string name="clone_entry_summary">读取一张标签，再把内容写到另一张空白标签上</string>
+    <string name="op_clone_write">复制标签</string>
+    <string name="err_clone_source_empty">源标签没有 NDEF 内容，无法复制</string>
+    <string name="err_clone_need_source">请先读取一张标签，再开始复制</string>
+    <string name="msg_clone_captured">已读取源标签：%1$d 条记录 / %2$d 字节</string>
+
+    <string name="clone_records_value">%1$d 条</string>
+    <string name="clone_size_value">%1$d 字节</string>
+    <string name="clone_lock_switch">写入后设为只读</string>
+    <string name="clone_lock_note">不可逆</string>
+
+    <string name="err_lock_need_ndef">该标签不支持设为只读</string>
+    <string name="err_lock_failed">设为只读失败，标签可能已锁定或不响应</string>
+
+    <string name="clone_lock_title">设为只读？</string>
+    <string name="clone_lock_msg">设为只读后，这张标签将永久无法再写入，此操作不可撤销。</string>
+    <string name="clone_lock_confirm">确认设为只读</string>
+
+    <!-- ================= MIFARE 备份 / 恢复 ================= -->
+    <string name="mifare_backup_section">整卡备份</string>
+    <string name="mifare_backup_desc">把整张 MIFARE Classic 卡的数据存成文件，需要时写回同型号空白卡。</string>
+    <string name="mifare_backup_btn">备份此卡</string>
+    <string name="mifare_restore_btn">恢复到此卡</string>
+    <string name="mifare_backup_key_label">认证密钥（十六进制，留空用默认密钥）</string>
+    <string name="mifare_backup_key_ph">FFFFFFFFFFFF</string>
+    <string name="mifare_backup_done">已备份：%1$d 个扇区，%2$d 个可写块</string>
+    <string name="mifare_backup_done_partial">已备份（部分）：%1$d 个扇区中有 %2$d 个认证失败</string>
+    <string name="mifare_restore_done">恢复完成：写入 %1$d 块，跳过 %2$d 块，失败 %3$d 块</string>
+    <string name="mifare_backup_note">安全处理：扇区尾块（含密钥）不备份，块 0（UID）写不了 —— 所以恢复出来的卡 UID 仍是目标卡自己的，不能用来复制门禁卡。</string>
+    <string name="mifare_restore_confirm_title">写入 %1$d 个块？</string>
+    <string name="mifare_restore_confirm_msg">会把备份数据写进贴近的这张卡，目标卡原有内容将被覆盖。扇区尾块（密钥）与块 0（UID）不会改动。</string>
+    <string name="err_backup_size_mismatch">卡型不匹配：备份是 %1$d 块，目标卡是 %2$d 块</string>
+    <string name="err_backup_sector_skipped">扇区 %1$d 未认证，已跳过</string>
+    <string name="err_restore_block_failed">块 %1$d 写入失败：%2$s</string>
+    <string name="err_backup_version">备份文件版本为 %1$d，当前只支持版本 1</string>
+    <string name="err_backup_empty">备份文件里没有块数据</string>
+    <string name="err_backup_key_invalid">密钥必须是 12 位十六进制（6 字节）</string>
+    <string name="err_mifare_not_classic">当前标签不是 MIFARE Classic</string>
+
+    <string name="op_restore_backup">恢复整卡备份</string>
+    <string name="err_backup_page_mismatch">目标卡容量不足：需要 %1$d 页，只有 %2$d 页</string>
+    <string name="ul_backup_section">整卡备份</string>
+    <string name="ul_backup_desc">把 NTAG / Ultralight 卡的用户数据页存成文件，需要时写回同型号空白卡。</string>
+    <string name="ul_backup_done">%1$s 备份完成：%2$d 个用户页</string>
+    <string name="ul_restore_done">恢复完成：写入 %1$d 页，跳过 %2$d 页，失败 %3$d 页</string>
+    <string name="ul_restore_confirm_title">写入 %1$d 个页？</string>
+    <string name="ul_restore_confirm_msg">会把备份数据写进贴近的这张卡，目标卡原有用户数据将被覆盖。UID 页、锁定位、CC 页与末尾配置区（密码）都不会改动。</string>
+    <string name="ul_backup_note">安全处理：只备份用户数据页（第 4 页起）。UID、锁定位、CC 与末尾密码区一律不动 —— 所以恢复出来的卡 UID 仍是目标卡自己的，不能用来复制门禁卡。</string>
+    <string name="mifare_keybook_label">密钥本（备份时依次尝试）</string>
+    <string name="mifare_keybook_save">保存</string>
+    <string name="mifare_keybook_empty">还没保存密钥，备份时只会尝试默认密钥</string>
+    <string name="mifare_keybook_saved">密钥已保存到密钥本</string>
+    <string name="err_keybook_full">密钥本最多 %1$d 条，先删一条再加</string>
+    <string name="template_section">我的模板</string>
+    <string name="template_desc">常用的内容存下来，点一下就自动填好表单</string>
+    <string name="template_empty">还没有模板。分享内容进来、或读到标签时都可以存为模板</string>
+    <string name="template_save">存为模板</string>
+    <string name="template_name_ph">模板名称（可留空）</string>
+    <string name="template_saved">模板已保存</string>
+    <string name="template_unnamed">未命名模板</string>
+    <string name="template_from_share">把当前分享内容存为模板</string>
+    <string name="err_template_nothing">没有可保存的内容</string>
+    <string name="err_template_image">图片内容不支持存为模板</string>
+    <string name="err_template_unsupported">这种内容还不支持存为模板</string>
+    <string name="read_template_desc">把这张卡的第一条记录存成模板，以后可以一键写到别的卡上</string>
+</resources>

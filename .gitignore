@@ -1,0 +1,31 @@
+# ---------- 构建产物 ----------
+*.iml
+.gradle/
+.kotlin/
+build/
+captures/
+.externalNativeBuild
+.cxx
+
+# APK / AAB 不进仓库 —— 通过 GitHub Release 分发
+dist/
+*.apk
+*.aab
+
+# ---------- 本机环境（含绝对路径，不可共享） ----------
+# sdk.dir 指向本机 Android SDK
+local.properties
+# org.gradle.java.home 指向本机 JDK；仓库内提供 gradle.properties.example 供复制
+gradle.properties
+
+# ---------- IDE ----------
+/.idea/
+*.ipr
+*.iws
+.DS_Store
+
+# ---------- 项目私有 ----------
+# 工作记忆：含本机路径、调试记录、未整理的笔记，不随源码发布
+.workbuddy/
+# 图标迭代过程中的临时备份
+.icon-backup-*

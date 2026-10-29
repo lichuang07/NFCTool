@@ -1,0 +1,34 @@
+# 首次构建前请把本文件复制为 gradle.properties。
+#
+# 仓库里不提交 gradle.properties，是因为它必须包含 `org.gradle.java.home`
+# 这样的本机绝对路径 —— 换一台机器就失效。本文件给出的是通用配置。
+
+org.gradle.jvmargs=-Xmx3072m -Dfile.encoding=UTF-8
+
+# JDK 17。AGP 9 / Gradle 9 需要 Java 17 以上。
+#
+# 如果你的机器上 `java` 不是 17（命令行 java -version 可查），
+# 去掉下面这行的注释并改成 JDK 17 的实际路径；
+# 命令行构建也可以直接传环境变量，例如：
+#   JAVA_HOME=/path/to/jdk17 ./gradlew assembleDebug
+#
+# ⚠️ 不建议设成 21/25：Gradle 会尝试联网下载对应工具链，网络不通时构建直接中断。
+# org.gradle.java.home=/path/to/jdk-17
+
+org.gradle.parallel=true
+org.gradle.caching=true
+org.gradle.configuration-cache=true
+
+android.useAndroidX=true
+android.nonTransitiveRClass=true
+android.nonFinalResIds=true
+
+kotlin.code.style=official
+
+# 如果你所在的网络里全局 Gradle 代理已失效（依赖解析全部失败），
+# 可以用下面两行按项目粒度绕开代理：
+# systemProp.http.nonProxyHosts=*
+# systemProp.https.nonProxyHosts=*
+
+# Enabled parallel sync for Gradle 9.4+
+org.gradle.tooling.parallel=true

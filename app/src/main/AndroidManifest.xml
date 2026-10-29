@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- 后台读卡所需：Android 9+ 需要基础权限，Android 14+ 需要按类型申请 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE" />
+    <!-- Android 13+ 显示后台扫描通知需要 -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="false" />
+
+    <!--
+        关掉预测式返回（Predictive Back）的系统动画。
+
+        targetSdk >= 35 时 android:enableOnBackInvokedCallback 默认为 true：
+        只要应用没主动注册 OnBackPressedCallback，系统就把每一次返回手势
+        当成「要回桌面」，播放窗口缩小 + 半透明的 back-to-home 动画 ——
+        即使在写入详情页只是返回上一级，整个界面也会缩一下并露出后面的
+        桌面，观感非常怪。
+
+        关掉之后：返回手势照常可用，但由 NfctoolAppRoot 里的 BackHandler
+        接管，走 Compose 自己的转场（详情页右滑退出）；只有在根页面
+        （没有可回退的记录）时才真正退出应用。
+    -->
+    <application
+        android:name=".NfctoolApp"
+        android:allowBackup="true"
+        android:enableOnBackInvokedCallback="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Nfctool">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.Nfctool.Splash"
+            android:windowSoftInputMode="adjustResize">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- NDEF 标签发现：点击标签直接拉起应用 -->
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+
+            <!-- 任意标签发现：冷启动读取 -->
+            <intent-filter>
+                <action android:name="android.nfc.action.TAG_DISCOVERED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- 技术发现：携带 tech-list 元数据 -->
+            <intent-filter>
+                <action android:name="android.nfc.action.TECH_DISCOVERED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.nfc.action.TECH_DISCOVERED"
+                android:resource="@xml/nfc_tech_filter" />
+
+            <!--
+                接收其他应用的分享：地图应用分享地点、浏览器分享链接、
+                备忘录/微信分享文本，都可以直接进本应用预填写入表单。
+                CATEGORY_DEFAULT 是必须的，否则不会出现在分享列表里。
+            -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/*" />
+            </intent-filter>
+
+            <!-- 浏览器「分享」有时用 SEND_MULTIPLE -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+
+            <!-- 分享联系人：系统通讯录、微信等用 vCard MIME -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/vcard" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/x-vcard" />
+            </intent-filter>
+
+            <!-- 分享图片：相册、图库、截图分享 -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+
+        <!-- 主机卡模拟（HCE）：让本机手机扮演 NFC 卡片 -->
+        <service
+            android:name=".core.hce.NfcHceService"
+            android:exported="true"
+            android:permission="android.permission.BIND_NFC_SERVICE">
+            <intent-filter>
+                <action android:name="android.nfc.cardemulation.action.HOST_APDU_SERVICE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.nfc.cardemulation.host_apdu_service"
+                android:resource="@xml/apdu_service" />
+        </service>
+
+        <!-- 后台读卡：应用切到后台后继续扫描标签 -->
+        <service
+            android:name=".core.service.BackgroundScanService"
+            android:exported="false"
+            android:foregroundServiceType="connectedDevice" />
+
+        <!-- 后台标签接收器由 BackgroundScanService 动态注册，
+             静态注册在后台被唤起时无法启动 Activity，故不在此声明。 -->
+        <!-- 导出标签数据时通过 FileProvider 分享文件 -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>

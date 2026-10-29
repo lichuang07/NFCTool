@@ -1,0 +1,15 @@
+# 统一按 LF 入库，检出时按平台换行；
+# shell 脚本与 gradlew 必须保持 LF，否则 Linux / macOS 上无法执行。
+* text=auto eol=lf
+
+# Windows 批处理按 CRLF 检出
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# 二进制不做换行转换
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.apk binary
+*.jar binary

@@ -1,0 +1,994 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  English resources (values-en).
+
+  中文默认资源在 values/strings.xml。语言切换见 core/i18n/LocalePref.kt。
+-->
+<resources>
+
+    <!-- ============ App & bottom navigation ============ -->
+    <string name="app_name">NFC Toolbox</string>
+    <string name="tab_read">Read</string>
+    <string name="tab_write">Write</string>
+    <string name="tab_console">Console</string>
+    <string name="tab_history">History</string>
+    <string name="tab_settings">Settings</string>
+
+    <!-- ============ Common ============ -->
+    <string name="action_ok">Got it</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_confirm">Confirm</string>
+    <string name="action_clear">Clear</string>
+    <string name="action_copy_uid">Copy UID</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_fill">Fill in</string>
+    <string name="action_enabled">Enabled</string>
+    <string name="action_disabled">Disabled</string>
+    <string name="action_yes">Yes</string>
+    <string name="action_no">No</string>
+    <string name="action_unknown">Unknown</string>
+    <string name="action_back">Back</string>
+    <string name="action_detecting">Pending</string>
+    <string name="unit_bytes">%1$d bytes</string>
+    <string name="unit_meters">%1$s m</string>
+    <string name="toast_copied_uid">UID copied</string>
+
+    <!-- ============ Read page ============ -->
+    <string name="read_status_no_adapter">NFC not supported by this device</string>
+    <string name="read_status_disabled">NFC is off</string>
+    <string name="read_status_ready">Ready</string>
+    <string name="read_status_online">Online</string>
+    <string name="read_status_offline">Off</string>
+    <string name="read_status_unavailable">Unavailable</string>
+    <string name="read_hero_idle_title">Hold a tag against the back of your phone</string>
+    <string name="read_hero_idle_desc">Supports NDEF / MIFARE / Ultralight / ISO 15693 / FeliCa / ISO-DEP</string>
+    <string name="read_hero_busy_title">Reading…</string>
+    <string name="read_hero_busy_desc">Parsing card data, please wait</string>
+    <string name="read_hero_hastag_title">Tag detected</string>
+    <string name="read_hero_hastag_desc">Tap to scan the next tag</string>
+    <string name="read_hero_rescan">Rescan</string>
+    <string name="read_warn_no_hw">This device has no NFC hardware; reading and writing are unavailable</string>
+    <string name="read_warn_nfc_off">NFC is turned off. Please enable it in system settings</string>
+    <string name="read_warn_intent_blocked">The system has blocked this app from receiving tag events. Enable it in Default Apps settings</string>
+    <string name="read_waiting">Waiting to scan</string>
+    <string name="read_hint_ndef">Read/write text, links, vCard, Smart Poster</string>
+    <string name="read_hint_mifare">Sector read/write, key auth, factory reset</string>
+    <string name="read_hint_ultralight">Page read/write, permanent OTP lock</string>
+    <string name="read_hint_iso15693">Block read/write, permanent lock</string>
+    <string name="read_hint_isodep">APDU passthrough, bank card info</string>
+    <string name="read_hint_raw">Raw protocol frame send/receive for advanced use</string>
+    <string name="read_section_tag_info">Tag info</string>
+    <string name="read_section_ndef">NDEF data</string>
+    <string name="read_section_ndef_unsupported">Not supported</string>
+    <string name="read_section_ndef_empty">Empty</string>
+    <string name="read_section_ndef_error">Read failed</string>
+    <string name="read_section_capability">Device capability</string>
+    <string name="read_section_block">Block data</string>
+    <string name="read_section_block_trailing">Raw memory</string>
+    <string name="read_ndef_unsupported_note">This tag has no NDEF data area. Use the tech info below for block-level access</string>
+    <string name="read_ndef_empty_note">This tag supports NDEF but the area is empty (blank tag). Format it on the Write tab first</string>
+    <string name="read_ndef_read_failed">NDEF read failed</string>
+    <string name="read_ndef_empty_msg">The NDEF message is empty; there are no records on this tag</string>
+    <string name="read_ndef_records_count">%1$d records · %2$d bytes</string>
+    <string name="read_label_uid">UID</string>
+    <string name="read_label_uid_len">UID length</string>
+    <string name="read_label_uid_reversed">Reversed UID</string>
+    <string name="read_label_capacity">Capacity</string>
+    <string name="read_label_sectors_blocks">Sectors / blocks</string>
+    <string name="read_label_total_pages">Total pages</string>
+    <string name="read_label_user_pages">User pages</string>
+    <string name="read_label_ndef_capacity">NDEF capacity</string>
+    <string name="read_label_writable">Writable</string>
+    <string name="read_writable_yes">Yes</string>
+    <string name="read_writable_no_locked">No (locked)</string>
+    <string name="read_label_protocol">Protocol</string>
+    <string name="read_label_hist_bytes">Historical bytes</string>
+    <string name="read_label_supported_tech">Supported tech</string>
+    <string name="read_label_raw_tech_list">Raw tech list</string>
+    <string name="read_label_text">Text</string>
+    <string name="read_label_uri">URI</string>
+    <string name="read_label_mime">MIME type</string>
+    <string name="read_label_tnf">TNF</string>
+    <string name="read_label_type_bytes">type bytes</string>
+    <string name="read_label_record_id">Record ID</string>
+    <string name="read_label_raw_data">Raw data</string>
+    <string name="read_block_title">Read block data</string>
+    <string name="read_block_desc">MIFARE Classic reads by sector (default key; failed sectors are skipped); Ultralight reads all user pages</string>
+    <string name="read_block_mifare">MIFARE Classic · %1$d blocks</string>
+    <string name="read_block_ultralight">MIFARE Ultralight · %1$d pages</string>
+    <string name="read_block_block_n">Block %1$d</string>
+    <string name="read_block_page_n">Page %1$d</string>
+    <string name="read_export_title">Export data</string>
+    <string name="read_export_desc">Export this tag\'s UID, NDEF content and data blocks to a file</string>
+    <string name="read_export_json">Export JSON</string>
+    <string name="read_export_text">Export text</string>
+    <string name="read_export_done_title">Export complete</string>
+    <string name="read_export_fail_title">Export failed</string>
+    <string name="read_dump_done_title">Read complete</string>
+    <string name="read_dump_fail_title">Read failed</string>
+    <string name="read_cap_secure_nfc">Secure NFC</string>
+    <string name="read_cap_observe">Observe mode</string>
+    <string name="read_cap_reader_option">Reader option</string>
+    <string name="read_cap_antenna">Antenna position</string>
+    <string name="read_cap_tag_intent">Tag event permission</string>
+    <string name="read_cap_not_supported">Not supported by device</string>
+    <string name="read_cap_enabled">Enabled</string>
+    <string name="read_cap_supported_off">Supported, not enabled</string>
+    <string name="read_cap_can_enable">Can be enabled</string>
+    <string name="read_cap_allowed">Allowed</string>
+    <string name="read_cap_blocked">Blocked by system</string>
+
+    <!-- ============ Write catalog page ============ -->
+    <string name="write_subtitle_last">Last read: %1$s · choose what to write</string>
+    <string name="write_subtitle_idle">Choose a content type, then tap Write and hold a tag close</string>
+    <string name="write_no_preread_title">No pre-read required</string>
+    <string name="write_no_preread_desc">Pick a type and tap "Write". The app will ask you to hold a tag close and completes the write the moment it detects one</string>
+    <string name="write_no_ndef_title">This tag does not support NDEF</string>
+    <string name="write_no_ndef_desc">Only the storage tech entries below (block/page level) can be used</string>
+    <string name="write_group_count">%1$d items</string>
+    <string name="write_entry_tech_required">Requires tag support: %1$s</string>
+
+    <!-- ============ Write detail page (shared) ============ -->
+    <string name="write_detail_unknown_type">Unknown write type</string>
+    <string name="write_result_ok">Success</string>
+    <string name="write_result_fail">Failed</string>
+    <string name="write_detail_no_preread_title">No pre-read required</string>
+    <string name="write_detail_no_preread_desc">Tap "Write" below and hold an NFC tag close to finish automatically</string>
+    <string name="write_detail_last_read">Last read: %1$s</string>
+    <string name="write_detail_last_read_ref">UID %1$s · NDEF %2$d bytes · for reference only; the actual tag you touch is what gets written</string>
+    <string name="write_detail_last_read_blank">Last read: %1$s (blank tag)</string>
+    <string name="write_detail_last_read_blank_ref">UID %1$s · for reference only; it will be formatted as NDEF on write</string>
+    <string name="write_detail_last_read_locked">Last read: %1$s</string>
+    <string name="write_detail_last_read_locked_ref">NDEF area is read-only · for reference only; use a writable tag instead</string>
+    <string name="write_hint_locked">Note: the last tag read had a read-only NDEF area (possibly locked). Writing is not restricted to that tag — try a writable one</string>
+
+    <!-- ============ Form: plain text ============ -->
+    <string name="write_text_label">Text content</string>
+    <string name="write_text_placeholder">Text to write to the tag</string>
+    <string name="write_text_button">Write text</string>
+
+    <!-- ============ Form: link ============ -->
+    <string name="write_uri_label">URL</string>
+    <string name="write_uri_title_label">Page title (optional)</string>
+    <string name="write_uri_title_placeholder">Add a title to write a Smart Poster</string>
+    <string name="write_uri_button">Write link</string>
+    <string name="write_uri_smartposter_button">Write as Smart Poster</string>
+    <string name="write_uri_prefilled_title">Page title prefilled from browser share</string>
+
+    <!-- ============ Form: location ============ -->
+    <string name="write_geo_hint">Writes a geo: URI (RFC 5870). Both Android and iOS open the map and locate on tap</string>
+    <string name="write_geo_prefilled">Prefilled from %1$s</string>
+    <string name="write_geo_coord_system">Coordinate system %1$s (geo: URI is interpreted as WGS-84; offset conversion is up to you)</string>
+    <string name="write_geo_lat">Latitude</string>
+    <string name="write_geo_lat_error">Latitude must be between -90 and 90</string>
+    <string name="write_geo_lon">Longitude</string>
+    <string name="write_geo_lon_error">Longitude must be between -180 and 180</string>
+    <string name="write_geo_label">Place name</string>
+    <string name="write_geo_label_ph">Tiananmen</string>
+    <string name="write_geo_alt">Altitude (m, optional)</string>
+    <string name="write_geo_unc">Accuracy (m, optional)</string>
+    <string name="write_geo_zoom">Zoom level (optional)</string>
+    <string name="write_geo_button">Write location</string>
+
+    <!-- ============ Form: image ============ -->
+    <string name="write_image_hint">Images are compressed to fit the tag capacity. Tag capacity is tiny (NTAG213 is only 137 bytes); what gets written is a compressed low-res version</string>
+    <string name="write_image_empty">No image selected. Share one from your gallery to this app, or paste image hex data here</string>
+    <string name="write_image_data_label">Image data (hex, optional)</string>
+    <string name="write_image_load">Load image data</string>
+    <string name="write_image_parse_fail">Failed to parse image data. Check the hex format</string>
+    <string name="write_image_stat_original">Original size</string>
+    <string name="write_image_stat_compressed">Compressed</string>
+    <string name="write_image_stat_dimension">Dimensions</string>
+    <string name="write_image_stat_format">Format</string>
+    <string name="write_image_stat_capacity">Tag capacity</string>
+    <string name="write_image_capacity_pending">Detected on write</string>
+    <string name="write_image_over_capacity">Still %1$d bytes after compression, over the %2$d-byte budget. Consider a QR code (URL mode) instead</string>
+    <string name="write_image_ratio">About %1$s× compression — fits</string>
+    <string name="write_image_auto">Compressed to the tag\'s actual capacity on write; a clear error appears if it doesn\'t fit</string>
+    <string name="write_image_button">Write image</string>
+
+    <!-- ============ Form: QR code ============ -->
+    <string name="write_qr_hint">Turns a URL or text into a QR code on the tag. Tags are small: write content only (smallest) or the QR image only</string>
+    <string name="write_qr_content">QR content</string>
+    <string name="write_qr_mode">Write mode</string>
+    <string name="write_qr_mode_both">Content + code</string>
+    <string name="write_qr_mode_content">Content only</string>
+    <string name="write_qr_mode_image">QR only</string>
+    <string name="write_qr_mode_content_desc">Raw content only, no QR image. Smallest footprint; tap opens the link or shows the text</string>
+    <string name="write_qr_mode_image_desc">QR image only, no raw content. Content comes from scanning; good for long content</string>
+    <string name="write_qr_mode_both_desc">Both raw content and QR image. Larger footprint, but both usages work</string>
+    <string name="write_qr_tip">Tip: a real 1-bit QR PNG is about 200–320 bytes, which does not fit an NTAG213 (137 bytes) — choose "Content only" in that case</string>
+    <string name="write_qr_preview_hint">A live QR preview appears here once you type content</string>
+    <string name="write_qr_too_long">Content too long to encode as a QR code. Please shorten it</string>
+    <string name="write_qr_stat_content_len">Content length</string>
+    <string name="write_qr_stat_version">QR version</string>
+    <string name="write_qr_version_value">Version %1$s</string>
+    <string name="write_qr_stat_capacity">Tag capacity</string>
+    <string name="write_qr_capacity_unknown">Unknown</string>
+    <string name="write_qr_stat_estimated">Estimated write</string>
+    <string name="write_qr_err_content_over">Content %1$d bytes exceeds capacity %2$d bytes. Please shorten</string>
+    <string name="write_qr_err_qr_over">QR image %1$d bytes exceeds capacity %2$d bytes. Modules shrink on write; if it still doesn\'t fit, shorten the content or use "Content only"</string>
+    <string name="write_qr_err_total_over">Estimated %1$d bytes exceeds capacity %2$d bytes. The QR shrinks on write; if it still doesn\'t fit, use "Content only"</string>
+    <string name="write_qr_ok_content">Very small footprint; fits on the tag; tap opens directly, no scanning needed</string>
+    <string name="write_qr_ok_total">Within capacity — writable</string>
+    <string name="write_qr_button_content">Write content</string>
+    <string name="write_qr_button_image">Write QR image</string>
+    <string name="write_qr_button_both">Write content + QR</string>
+    <string name="write_qr_preview">QR preview</string>
+    <string name="write_qr_preview_fail">Preview generation failed</string>
+
+    <!-- ============ Form: Bluetooth pairing ============ -->
+    <string name="write_bt_hint">Writes a Bluetooth OOB pairing record. Note: Android itself does not parse such records — a vendor app must register the MIME type to respond; iPhone does not recognize them at all</string>
+    <string name="write_bt_protocol">Protocol type</string>
+    <string name="write_bt_protocol_le">LE (low energy)</string>
+    <string name="write_bt_protocol_bredr">BR/EDR classic</string>
+    <string name="write_bt_address">Device address</string>
+    <string name="write_bt_address_error">Address must be 6 bytes of hex, e.g. AA:BB:CC:DD:EE:FF</string>
+    <string name="write_bt_little_endian">Stored little-endian per spec (BB first) — the easiest thing to get backwards</string>
+    <string name="write_bt_name">Device name (optional)</string>
+    <string name="write_bt_button">Write Bluetooth pairing</string>
+
+    <!-- ============ Form: Wi-Fi config ============ -->
+    <string name="write_wifi_hint">After writing, Android phones show a connection prompt on tap; iPhone only notifies and needs manual confirmation</string>
+    <string name="write_wifi_ssid">Network name (SSID)</string>
+    <string name="write_wifi_security">Security type</string>
+    <string name="write_wifi_open">Open</string>
+    <string name="write_wifi_password">Password</string>
+    <string name="write_wifi_password_ph">At least 8 characters</string>
+    <string name="write_wifi_hidden">Hidden network (SSID not broadcast)</string>
+    <string name="write_wifi_button">Write Wi-Fi config</string>
+
+    <!-- ============ Form: vCard ============ -->
+    <string name="write_vcard_hint">Generates standard vCard 3.0; importable to contacts on tap</string>
+    <string name="write_vcard_prefilled">Contact card prefilled from share</string>
+    <string name="write_vcard_name">Name</string>
+    <string name="write_vcard_name_ph">Jane Doe</string>
+    <string name="write_vcard_phone">Phone</string>
+    <string name="write_vcard_email">Email</string>
+    <string name="write_vcard_org">Organization</string>
+    <string name="write_vcard_org_ph">Acme Inc.</string>
+    <string name="write_vcard_title">Job title</string>
+    <string name="write_vcard_title_ph">Engineer</string>
+    <string name="write_vcard_url">Homepage</string>
+    <string name="write_vcard_address">Address</string>
+    <string name="write_vcard_address_ph">Pudong New Area, Shanghai</string>
+    <string name="write_vcard_button">Write contact card</string>
+
+    <!-- ============ Form: MECARD ============ -->
+    <string name="write_mecard_hint">MECARD saves more space than vCard and is natively recognized by Japanese phones; Android needs a third-party app</string>
+    <string name="write_mecard_name">Name</string>
+    <string name="write_mecard_name_ph">Jane Doe</string>
+    <string name="write_mecard_phone">Phone</string>
+    <string name="write_mecard_email">Email</string>
+    <string name="write_mecard_url">Homepage</string>
+    <string name="write_mecard_address">Address</string>
+    <string name="write_mecard_address_ph">Pudong New Area, Shanghai</string>
+    <string name="write_mecard_note">Note</string>
+    <string name="write_mecard_note_ph">Card note</string>
+    <string name="write_mecard_button">Write MECARD</string>
+
+    <!-- ============ Form: calendar event ============ -->
+    <string name="write_vcal_hint">Generates a VCALENDAR 2.0 event; addable to the calendar on tap</string>
+    <string name="write_vcal_summary">Event title</string>
+    <string name="write_vcal_summary_ph">Weekly meeting</string>
+    <string name="write_vcal_start">Start time</string>
+    <string name="write_vcal_end">End time</string>
+    <string name="write_vcal_location">Location</string>
+    <string name="write_vcal_location_ph">Meeting room 3</string>
+    <string name="write_vcal_desc">Description</string>
+    <string name="write_vcal_desc_ph">Discuss the NFC plan</string>
+    <string name="write_vcal_button">Write calendar event</string>
+
+    <!-- ============ Form: Smart Poster ============ -->
+    <string name="write_sp_hint">Writes one S record plus U records; the system shows the title as a tappable link group</string>
+    <string name="write_sp_title">Title</string>
+    <string name="write_sp_title_ph">Product site</string>
+    <string name="write_sp_links">Links (one per line)</string>
+    <string name="write_sp_lang">Language code</string>
+    <string name="write_sp_lang_zh">中文</string>
+    <string name="write_sp_lang_en">English</string>
+    <string name="write_sp_lang_ja">日本語</string>
+    <string name="write_sp_button">Write Smart Poster</string>
+
+    <!-- ============ Form: app launch ============ -->
+    <string name="write_aar_hint">Android dispatches the event to that app on reading an AAR; if not installed it goes to the store</string>
+    <string name="write_aar_pkg">Package name</string>
+    <string name="write_aar_pkg_hint">Package format: at least one dot, e.g. com.example.app. Use "App launch" to test common package names.</string>
+    <string name="write_aar_button">Write app launch record</string>
+
+    <!-- ============ Form: handover ============ -->
+    <string name="write_ho_hint">NFC Forum handover: on tap, the choice of which wireless tech to continue with is handed to the other device</string>
+    <string name="write_ho_type">Record type</string>
+    <string name="write_ho_type_hr">Hr select request</string>
+    <string name="write_ho_type_hs">Hs select response</string>
+    <string name="write_ho_carrier">Carrier type</string>
+    <string name="write_ho_carrier_data">Carrier data</string>
+    <string name="write_ho_button">Write handover</string>
+
+    <!-- ============ Form: AID ============ -->
+    <string name="write_aid_hint">An AID identifies an app on Type 4 tags; format is a hex byte string</string>
+    <string name="write_aid_label">AID (hex)</string>
+    <string name="write_aid_example">Example: A000000003100000 is a payment app AID (do not use on production tags).</string>
+    <string name="write_aid_button">Write AID</string>
+
+    <!-- ============ Form: custom MIME ============ -->
+    <string name="write_mime_hint">Any MIME type; the system dispatches by type to apps that registered it</string>
+    <string name="write_mime_type">MIME type</string>
+    <string name="write_mime_body">Content</string>
+    <string name="write_mime_body_ph">Content</string>
+    <string name="write_mime_button">Write MIME</string>
+
+    <!-- ============ Form: external type ============ -->
+    <string name="write_ext_hint">External type record (TNF 0x04); Android combines it into domain:type as the full type name</string>
+    <string name="write_ext_domain">Domain</string>
+    <string name="write_ext_type">Type</string>
+    <string name="write_ext_body">Content</string>
+    <string name="write_ext_body_ph">Content</string>
+    <string name="write_ext_button">Write external type</string>
+
+    <!-- ============ Form: storage tech ============ -->
+    <string name="write_ms_sectors">Sectors</string>
+    <string name="write_ms_blocks">Total blocks</string>
+    <string name="write_ms_key_a">Auth key (Key A)</string>
+    <string name="write_ms_block_no">Block number</string>
+    <string name="write_ms_block_data">Block data (16 bytes)</string>
+    <string name="write_ms_write_block">Write block</string>
+    <string name="write_ms_block_size_err">Block data must be 16 bytes, currently %1$d bytes</string>
+    <string name="write_ms_read_all">Read all blocks</string>
+    <string name="write_ms_restore">Factory reset</string>
+    <string name="write_ms_restore_title">Confirm factory reset?</string>
+    <string name="write_ms_restore_msg">Factory reset writes all MIFARE Classic sectors back to default keys and standard MAD data. The original key is required to restore</string>
+    <string name="write_ms_user_pages">User pages</string>
+    <string name="write_ms_page_no">Page number</string>
+    <string name="write_ms_page_data">Page data (4 bytes)</string>
+    <string name="write_ms_write_page">Write page</string>
+    <string name="write_ms_page_size_err">Page data must be 4 bytes, currently %1$d bytes</string>
+    <string name="write_iso_block_size_err">Block data must be 4 bytes, currently %1$d bytes</string>
+    <string name="write_ms_read_all_pages">Read all user pages</string>
+    <string name="write_iso_hint">NFC-V uses block addressing; each block is 4 bytes and access follows the tag\'s actual block count</string>
+    <string name="write_iso_block_data">Block data (4 bytes)</string>
+    <string name="write_desfire_hint">DESFire works over APDU passthrough: list files, write files, change keys</string>
+    <string name="write_desfire_title">DESFire card info</string>
+    <string name="write_desfire_desc">Communicates with the card over ISO 7816-4 APDU. Unauthenticated access can read version and file list only; file contents need the matching key</string>
+    <string name="write_desfire_read">Read card info</string>
+    <string name="write_desfire_version">Version</string>
+    <string name="write_desfire_read_failed">Read failed</string>
+    <string name="write_desfire_keys">Key settings</string>
+    <string name="write_desfire_file_count">File count</string>
+    <string name="write_desfire_file_id">File ID</string>
+    <string name="write_desfire_read_content">Read file content</string>
+    <string name="write_desfire_read_file">Read file</string>
+    <string name="write_desfire_fileid_err">File ID format is incorrect; enter 2 hex digits</string>
+    <string name="write_format_title">Format tag</string>
+    <string name="write_format_desc">Removes all content from the tag. Formatting writes a blank message, but the tag can still be overwritten afterwards</string>
+    <string name="write_format_blank">Format to blank tag</string>
+    <string name="write_format_button">Format tag</string>
+    <string name="write_format_confirm_title">Confirm formatting the tag?</string>
+    <string name="write_format_confirm_msg">Formatting erases all data on the tag. This cannot be undone</string>
+    <string name="write_restore_title">Factory reset</string>
+    <string name="write_restore_desc">Writes all sectors back to default keys and standard MAD data. If the original key is not the default, the card becomes inaccessible afterwards</string>
+    <string name="write_restore_button">Factory reset</string>
+
+    <!-- ============ Await-tag dialog ============ -->
+    <string name="await_title_waiting">Waiting for tag</string>
+    <string name="await_title_writing">Writing</string>
+    <string name="await_msg_writing">Writing %1$s — keep the tag against the back of your phone…</string>
+    <string name="await_msg_waiting_label">Hold an NFC tag against the back of your phone; %1$s starts the moment one is detected</string>
+    <string name="await_msg_waiting">Hold an NFC tag against the back of your phone; writing starts the moment one is detected</string>
+    <string name="await_note">Do not move the tag away or lock the screen while writing</string>
+
+    <!-- ============ Console page ============ -->
+    <string name="console_subtitle">Talk to the card directly: read bank card info, debug access cards, run arbitrary protocol commands</string>
+    <string name="console_mode_raw">Raw</string>
+    <string name="console_mode_apdu">APDU</string>
+    <string name="console_select_aid">SELECT AID</string>
+    <string name="console_aid_ph">A0000000031010</string>
+    <string name="console_select_aid_button">Select AID</string>
+    <string name="console_command_label">Command (hex)</string>
+    <string name="console_send_raw">Send raw command</string>
+    <string name="console_send_apdu">Send APDU</string>
+    <string name="console_await_hint">Tap "Send" and hold a tag close; the command runs the moment one is detected</string>
+    <string name="console_quick">Quick commands</string>
+    <string name="console_quick_read_ndef">Read NDEF content</string>
+    <string name="console_quick_bank_aid">Select bank card AID</string>
+    <string name="console_quick_get_response">GET RESPONSE</string>
+    <string name="console_quick_get_data">Get card data</string>
+    <string name="console_log">Communication log</string>
+    <string name="console_log_empty">No communication records yet</string>
+    <string name="console_result_title">Execution result</string>
+
+    <!-- ============ History page ============ -->
+    <string name="history_count">%1$d most recent records</string>
+    <string name="history_empty_title">No scan records yet</string>
+    <string name="history_empty_desc">Every tag you read is recorded here automatically</string>
+    <string name="history_clear_title">Clear scan history?</string>
+    <string name="history_clear_msg">This deletes all %1$d scan records. This cannot be undone</string>
+    <string name="history_clear_button">Clear</string>
+
+    <!-- ============ Settings page ============ -->
+    <string name="settings_section_appearance">Appearance</string>
+    <string name="settings_section_appearance_trailing">Accent color</string>
+    <string name="settings_theme_mode">Theme mode</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_system">Follow system</string>
+    <string name="settings_accent">Accent color</string>
+    <string name="settings_section_scan">Scan behavior</string>
+    <string name="settings_vibrate">Vibrate on scan</string>
+    <string name="settings_vibrate_desc">Haptic feedback when a tag is detected</string>
+    <string name="settings_skip_ndef">Skip NDEF pre-check on read</string>
+    <string name="settings_skip_ndef_desc">About 500ms faster, but NDEF content is not read</string>
+    <string name="settings_poll_nfc_b">Poll NFC-B</string>
+    <string name="settings_poll_nfc_b_desc">Turning this off reduces interference and slightly lowers power draw</string>
+    <string name="settings_background_scan">Background scan</string>
+    <string name="settings_background_scan_desc">Keep scanning tags after the app goes to background (requires granting tag reception in system default apps)</string>
+    <string name="settings_export_secrets">Export sensitive fields</string>
+    <string name="settings_export_secrets_desc">Exports Wi-Fi passwords etc. as-is; masked by default</string>
+    <string name="settings_section_hce">Host card emulation</string>
+    <string name="settings_section_hce_trailing">HCE</string>
+    <string name="settings_hce_unsupported">This device does not support HCE host card emulation</string>
+    <string name="settings_hce_supported">Device support</string>
+    <string name="settings_hce_aids">Registered AIDs</string>
+    <string name="settings_hce_aids_none">None registered</string>
+    <string name="settings_hce_default">Default service</string>
+    <string name="settings_hce_default_this">This app</string>
+    <string name="settings_hce_default_other">Other app / not set</string>
+    <string name="settings_hce_desc">Lets the phone act as an NFC card. When a reader comes close it sends APDU commands to the phone and this app answers. The registered AID is a vendor-private one and takes part in no payment flow</string>
+    <string name="settings_hce_open">System card emulation settings</string>
+    <string name="settings_hce_refresh">Refresh status</string>
+    <string name="settings_section_device">Device info</string>
+    <string name="settings_nfc_adapter">NFC adapter</string>
+    <string name="settings_nfc_present">Present</string>
+    <string name="settings_nfc_absent">Absent</string>
+    <string name="settings_nfc_state">NFC status</string>
+    <string name="settings_nfc_on">On</string>
+    <string name="settings_nfc_off">Off</string>
+    <string name="settings_secure_nfc">Secure NFC</string>
+    <string name="settings_observe_mode">Observe mode</string>
+    <string name="settings_reader_option">Reader option</string>
+    <string name="settings_supported">Supported</string>
+    <string name="settings_unsupported">Not supported</string>
+    <string name="settings_antenna">Antenna position</string>
+    <string name="settings_antenna_unknown">Unknown</string>
+    <string name="settings_target_sdk">Target SDK</string>
+    <string name="settings_min_sdk">Minimum supported</string>
+    <string name="settings_min_sdk_value">Android 7.0 (API 24)</string>
+    <string name="settings_section_about">About</string>
+    <string name="settings_version">App version</string>
+    <string name="settings_build">Build</string>
+    <string name="settings_build_value">NFCTool v1</string>
+    <string name="settings_supported_tags">Supported tag types</string>
+    <string name="settings_supported_tags_value">NDEF · MIFARE Classic · Ultralight · DESFire · ISO 15693 · FeliCa · ISO-DEP</string>
+    <string name="settings_about_button">View details</string>
+    <string name="settings_about_title">About NFC Toolbox</string>
+    <string name="settings_about_body">This app is built on the native Android NFC framework (NfcAdapter / android.nfc.tech).\n\nRead capability:\n• NDEF text, URI, MIME, Smart Poster records\n• MIFARE Classic sector read/write, key authentication, factory reset\n• MIFARE Ultralight page read/write\n• ISO 15693 block read/write\n• ISO 7816 APDU passthrough (61xx continuation handled automatically)\n• FeliCa, NFC-A/B/F/V raw protocol frames\n\nWrite capability:\n• NDEF content write and format\n• MIFARE Classic single block write\n• Ultralight single page write\n• ISO 15693 block write\n• Arbitrary raw command passthrough\n\nNote: some cards ship locked or require auth keys; write capability is limited by the card\'s own permissions.</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_language_system">Follow system</string>
+    <string name="settings_language_zh">中文</string>
+    <string name="settings_language_en">English</string>
+
+    <!-- ============ Accent palette names ============ -->
+    <string name="accent_nebula">Nebula Purple</string>
+    <string name="accent_aurora">Aurora Cyan</string>
+    <string name="accent_neon_pink">Neon Pink</string>
+    <string name="accent_iris">Iris Violet</string>
+    <string name="accent_lava">Lava Gold</string>
+    <string name="accent_data_green">Data Green</string>
+
+    <!-- ============ Card types ============ -->
+    <string name="card_ndef_generic_name">NDEF tag (standard)</string>
+    <string name="card_ndef_generic_category">Generic</string>
+    <string name="card_ndef_generic_summary">Formatted NDEF tag; stores text/links</string>
+    <string name="card_ndef_empty_name">Blank tag</string>
+    <string name="card_ndef_empty_category">Generic</string>
+    <string name="card_ndef_empty_summary">Unformatted empty tag; write directly</string>
+    <string name="card_ntag213_name">NTAG213</string>
+    <string name="card_ntag213_category">NXP</string>
+    <string name="card_ntag213_summary">144-byte user area; common for access control and labels</string>
+    <string name="card_ntag215_name">NTAG215</string>
+    <string name="card_ntag215_category">NXP</string>
+    <string name="card_ntag215_summary">504-byte user area; multi-byte NDEF</string>
+    <string name="card_ntag216_name">NTAG216</string>
+    <string name="card_ntag216_category">NXP</string>
+    <string name="card_ntag216_summary">888-byte user area; largest capacity</string>
+    <string name="card_ultralight_name">Ultralight</string>
+    <string name="card_ultralight_category">NXP</string>
+    <string name="card_ultralight_summary">Ultralight family lightweight card</string>
+    <string name="card_ultralight_c_name">Ultralight C</string>
+    <string name="card_ultralight_c_category">NXP</string>
+    <string name="card_ultralight_c_summary">Lightweight card with DES authentication</string>
+    <string name="card_mifare_classic_1k_name">MIFARE Classic 1K</string>
+    <string name="card_mifare_classic_1k_category">NXP</string>
+    <string name="card_mifare_classic_1k_summary">1KB capacity, 16 sectors</string>
+    <string name="card_mifare_classic_4k_name">MIFARE Classic 4K</string>
+    <string name="card_mifare_classic_4k_category">NXP</string>
+    <string name="card_mifare_classic_4k_summary">4KB capacity, 40 sectors</string>
+    <string name="card_mifare_plus_name">MIFARE Plus</string>
+    <string name="card_mifare_plus_category">NXP</string>
+    <string name="card_mifare_plus_summary">AES-encrypted advanced security card</string>
+    <string name="card_mifare_desfire_name">MIFARE DESFire</string>
+    <string name="card_mifare_desfire_category">NXP</string>
+    <string name="card_mifare_desfire_summary">Security card platform based on ISO 7816-4</string>
+    <string name="card_iso15693_name">ISO 15693 (NFC-V)</string>
+    <string name="card_iso15693_category">Standard</string>
+    <string name="card_iso15693_summary">Vicinity long-range card, e.g. campus card</string>
+    <string name="card_felica_name">FeliCa</string>
+    <string name="card_felica_category">Sony</string>
+    <string name="card_felica_summary">Japanese transit IC card</string>
+    <string name="card_bank_name">Bank / payment card</string>
+    <string name="card_bank_category">Payment</string>
+    <string name="card_bank_summary">EMV payment card; transaction info readable</string>
+    <string name="card_civic_name">ID card / certificate</string>
+    <string name="card_civic_category">Government</string>
+    <string name="card_civic_summary">Resident ID card or electronic certificate</string>
+    <string name="card_access_name">Access / attendance card</string>
+    <string name="card_access_category">Security</string>
+    <string name="card_access_summary">Common contactless access credential</string>
+    <string name="card_unknown_name">Unrecognized card</string>
+    <string name="card_unknown_category">Other</string>
+    <string name="card_unknown_summary">Model unknown; handled generically</string>
+
+    <!-- ============ Tag tech ============ -->
+    <string name="tech_ndef_name">NDEF</string>
+    <string name="tech_ndef_desc">NFC Forum standard format; text, links, vCard etc.</string>
+    <string name="tech_ndef_formatable_name">NDEF formattable</string>
+    <string name="tech_ndef_formatable_desc">Blank tag; format to NDEF before writing</string>
+    <string name="tech_mifare_classic_name">MIFARE Classic</string>
+    <string name="tech_mifare_classic_desc">1K/4K sector card; Key A/Key B auth first</string>
+    <string name="tech_mifare_ultralight_name">MIFARE Ultralight</string>
+    <string name="tech_mifare_ultralight_desc">NTAG/UL lightweight card; 4-byte pages</string>
+    <string name="tech_mifare_plus_name">MIFARE Plus</string>
+    <string name="tech_mifare_plus_desc">Accessed in Classic-compatible mode; more secure</string>
+    <string name="tech_mifare_desfire_name">MIFARE DESFire</string>
+    <string name="tech_mifare_desfire_desc">Session-based card communication over APDU</string>
+    <string name="tech_iso_dep_name">ISO 7816 (IsoDep)</string>
+    <string name="tech_iso_dep_desc">Smart card / bank card standard; APDU passthrough</string>
+    <string name="tech_nfc_a_name">NFC-A (ISO 14443-3)</string>
+    <string name="tech_nfc_a_desc">Low-level protocol; raw frames allowed</string>
+    <string name="tech_nfc_b_name">NFC-B (ISO 14443-3)</string>
+    <string name="tech_nfc_b_desc">Low-level protocol; raw frames allowed</string>
+    <string name="tech_nfc_f_name">NFC-F (JIS 6319-4)</string>
+    <string name="tech_nfc_f_desc">FeliCa transit card system</string>
+    <string name="tech_nfc_v_name">NFC-V (ISO 15693)</string>
+    <string name="tech_nfc_v_desc">Vicinity card; block-addressed read/write</string>
+    <string name="tech_nfc_barcode_name">NFC barcode</string>
+    <string name="tech_nfc_barcode_desc">Read-only; Sony/Kovio barcode tags</string>
+    <string name="tech_unknown_name">Unknown type</string>
+    <string name="tech_unknown_desc">Unsupported tech combination</string>
+
+    <!-- ============ NDEF sub-types ============ -->
+    <string name="ndef_kind_text">Plain text</string>
+    <string name="ndef_kind_uri">Link</string>
+    <string name="ndef_kind_geo">Location</string>
+    <string name="ndef_kind_wifi">Wi-Fi config</string>
+    <string name="ndef_kind_vcard">Contact card vCard</string>
+    <string name="ndef_kind_mecard">Contact card MECARD</string>
+    <string name="ndef_kind_vcalendar">Calendar event</string>
+    <string name="ndef_kind_smart_poster">Smart Poster</string>
+    <string name="ndef_kind_android_app">App launch</string>
+    <string name="ndef_kind_handover">Handover</string>
+    <string name="ndef_kind_bluetooth_oob">Bluetooth pairing</string>
+    <string name="ndef_kind_aid">AID identifier</string>
+    <string name="ndef_kind_mime">MIME content</string>
+    <string name="ndef_kind_external">External type</string>
+    <string name="ndef_kind_unknown">Unknown type</string>
+
+    <!-- ============ NDEF structured field names ============ -->
+    <string name="detail_content">Content</string>
+    <string name="detail_address">Address</string>
+    <string name="detail_aid_bytes">AID bytes</string>
+    <string name="detail_aid_length">AID length</string>
+    <string name="detail_record_kind">Record kind</string>
+    <string name="detail_type4_app">NFC Forum Type 4 app identifier</string>
+    <string name="detail_mime_type">MIME type</string>
+    <string name="detail_payload_size">Payload size</string>
+    <string name="detail_content_preview">Content preview</string>
+    <string name="detail_binary_preview">Binary preview</string>
+    <string name="detail_external_type">External type</string>
+    <string name="detail_domain">Domain</string>
+    <string name="detail_subtype">Subtype</string>
+    <string name="detail_tnf">TNF</string>
+    <string name="detail_type_bytes">type bytes</string>
+    <string name="detail_latitude">Latitude</string>
+    <string name="detail_longitude">Longitude</string>
+    <string name="detail_altitude">Altitude</string>
+    <string name="detail_accuracy">Accuracy</string>
+    <string name="detail_place_name">Place name</string>
+    <string name="detail_zoom">Zoom level</string>
+    <string name="detail_uri">URI</string>
+    <string name="detail_bt_record_type">Record type</string>
+    <string name="detail_bt_le">Bluetooth LE OOB</string>
+    <string name="detail_bt_bredr">Bluetooth BR/EDR OOB</string>
+    <string name="detail_device_address">Device address</string>
+    <string name="detail_device_name">Device name</string>
+    <string name="detail_pairing_material">Pairing material</string>
+    <string name="detail_pairing_ssp">Contains SSP check value</string>
+    <string name="detail_network_name">Network name</string>
+    <string name="detail_hidden_network">Hidden network</string>
+    <string name="detail_auth_type">Auth type</string>
+    <string name="detail_password">Password</string>
+    <string name="detail_full_name">Name</string>
+    <string name="detail_name_parts">Last / first name</string>
+    <string name="detail_org">Organization</string>
+    <string name="detail_job_title">Job title</string>
+    <string name="detail_phone">Phone</string>
+    <string name="detail_email">Email</string>
+    <string name="detail_url">URL</string>
+    <string name="detail_address_field">Address</string>
+    <string name="detail_note">Note</string>
+    <string name="detail_target_app">Target app</string>
+    <string name="detail_aar_type">Android Application Record</string>
+    <string name="detail_event_title">Title</string>
+    <string name="detail_start">Start</string>
+    <string name="detail_end">End</string>
+    <string name="detail_location">Location</string>
+    <string name="detail_organizer">Organizer</string>
+    <string name="detail_description">Description</string>
+    <string name="detail_language">Language</string>
+    <string name="detail_ho_request">Handover Request (select request)</string>
+    <string name="detail_ho_select">Handover Select (select response)</string>
+    <string name="detail_version">Version</string>
+    <string name="detail_alt_carrier">Alternative carrier</string>
+
+    <!-- ============ Wi-Fi auth types ============ -->
+    <string name="wifi_auth_open">Open network (no password)</string>
+    <string name="wifi_auth_wpa_psk">WPA-PSK</string>
+    <string name="wifi_auth_wpa2_psk">WPA2-PSK</string>
+    <string name="wifi_auth_mixed">WPA/WPA2-PSK mixed</string>
+    <string name="wifi_auth_unknown">Unknown (0x%1$s)</string>
+
+    <!-- ============ Bluetooth AD type names ============ -->
+    <string name="bt_ad_complete_name">Complete device name</string>
+    <string name="bt_ad_le_address">LE device address</string>
+    <string name="bt_ad_le_role">LE role</string>
+    <string name="bt_ad_le_appearance">LE appearance</string>
+    <string name="bt_ad_le_flags">LE flags</string>
+    <string name="bt_ad_le_sc_confirm">LE SC confirmation value</string>
+    <string name="bt_ad_le_sc_random">LE SC random value</string>
+    <string name="bt_ad_unknown">Unknown (0x%1$s)</string>
+    <string name="bt_ad_slave_conn_interval">Slave connection interval</string>
+
+    <!-- ============ Handover carrier descriptions ============ -->
+    <string name="carrier_nfc_desc">Device identifier string, e.g. 00:11:22:33:44:55</string>
+    <string name="carrier_bt_desc">Bluetooth device address, 6 bytes, e.g. 01:02:03:04:05:06</string>
+    <string name="carrier_wifi_desc">Wi-Fi device identifier, usually a string</string>
+    <string name="carrier_uri_desc">Link to hand over, e.g. https://example.com</string>
+    <string name="carrier_unknown">Unknown (0x%1$s)</string>
+
+    <!-- ============ TNF names ============ -->
+    <string name="tnf_empty">Empty (0)</string>
+    <string name="tnf_well_known">Well-known (1)</string>
+    <string name="tnf_mime">MIME Media (2)</string>
+    <string name="tnf_absolute_uri">Absolute URI (3)</string>
+    <string name="tnf_external">External (4)</string>
+    <string name="tnf_unknown">Unknown (5)</string>
+    <string name="tnf_unchanged">Unchanged (6)</string>
+    <string name="tnf_number">TNF %1$d</string>
+
+    <!-- ============ APDU status words ============ -->
+    <string name="sw_unknown">Unknown</string>
+    <string name="sw_success">Success</string>
+    <string name="sw_more_data">More data available</string>
+    <string name="sw_warn_unchanged">Warning: state unchanged</string>
+    <string name="sw_warn_auth">Warning: authentication failed</string>
+    <string name="sw_exec_error">Execution error</string>
+    <string name="sw_len_error">Length error</string>
+    <string name="sw_not_allowed">Command not allowed</string>
+    <string name="sw_param_error">Parameter error</string>
+    <string name="sw_ins_unsupported">Command not supported</string>
+    <string name="sw_status">Status %1$s/%2$s</string>
+
+    <string name="share_source_contact">Contact card</string>
+    <string name="share_source_image">Image</string>
+    <string name="share_image_title">Shared image</string>
+    <string name="share_source_amap">Amap</string>
+    <string name="share_source_baidu">Baidu Maps</string>
+    <string name="share_source_qq">Tencent Maps</string>
+    <string name="share_source_google">Google Maps</string>
+    <string name="err_share_image_empty">Shared image is empty</string>
+    <string name="err_share_map_no_coord">No parseable coordinates found</string>
+    <string name="err_share_map_parse">%1$s shared content could not be parsed: %2$s</string>
+
+    <!-- ============ Core-layer error messages ============ -->
+    <string name="err_tag_no_mifare_classic">This tag does not support MIFARE Classic</string>
+    <string name="err_tag_no_isodep">This tag does not support ISO-DEP</string>
+    <string name="err_iso15693_status">ISO 15693 card returned error code 0x%1$s</string>
+    <string name="err_tag_no_nfcv">This tag does not support NFC-V (ISO 15693)</string>
+    <string name="err_tag_no_mifare_ultralight">This tag does not support MIFARE Ultralight</string>
+    <string name="err_ultralight_page_size">An Ultralight page must be %1$d bytes, currently %2$d</string>
+    <string name="err_tag_no_ndef">This tag contains no NDEF data</string>
+    <string name="err_no_ndef_message">No NDEF message on this tag</string>
+    <string name="err_tag_locked">Tag is locked and cannot be written</string>
+    <string name="err_write_over_capacity">Content is %1$d bytes, over the tag\'s NDEF capacity of %2$d bytes</string>
+    <string name="err_tag_not_formattable">This tag supports neither NDEF nor formatting</string>
+    <string name="err_tag_left_range">The tag has left the field; the write result cannot be confirmed</string>
+    <string name="err_write_readback_failed">Read-back after write failed: %1$s</string>
+    <string name="err_comm_abnormal">Communication error</string>
+    <string name="err_write_readback_empty">Read-back after write is empty: the tag may have left the field</string>
+    <string name="err_write_verify_failed">Read-back verification failed: %1$s</string>
+    <string name="err_tag_not_formattable_short">This tag does not support formatting</string>
+    <string name="err_sector_auth_failed">Sector %1$d authentication failed; the key may be incorrect</string>
+    <string name="err_read_block_failed">Failed to read block %1$d; it may be unauthenticated or unreadable</string>
+    <string name="err_mifare_block_size">A MIFARE Classic block must be 16 bytes, currently %1$d</string>
+    <string name="err_read_block_failed_short">Failed to read block %1$d</string>
+    <string name="err_read_page_failed">Failed to read page %1$d</string>
+    <string name="err_ndef_read_failed">NDEF read failed</string>
+    <string name="err_aid_empty">AID cannot be empty</string>
+    <string name="err_aid_too_long">AID cannot exceed 16 bytes</string>
+    <string name="err_image_empty">Image content is empty</string>
+    <string name="err_qr_empty">QR image is empty</string>
+    <string name="err_content_empty">Content is empty</string>
+    <string name="err_desfire_version_len">Unexpected version response length: %1$d bytes</string>
+    <string name="err_desfire_write">Write failed: %1$s</string>
+    <string name="err_desfire_create_file">File creation failed: %1$s</string>
+    <string name="err_desfire_delete_file">File deletion failed: %1$s</string>
+    <string name="err_desfire_key_empty">Key settings response is empty</string>
+    <string name="err_desfire_version_unknown">Unknown (%1$s.%2$s)</string>
+    <string name="err_wifi_ssid_empty">SSID cannot be empty</string>
+    <string name="err_wifi_password_len">Wi-Fi password is at most %1$d bytes, currently %2$d</string>
+    <string name="err_wifi_password_required">A password is required for encrypted networks</string>
+    <string name="err_bt_address_format">Invalid Bluetooth address: %1$s</string>
+    <string name="err_bt_ad_too_long">AD data too long</string>
+    <string name="err_ho_no_carrier">At least one carrier is required</string>
+    <string name="err_ho_data_too_long">Carrier data too long</string>
+    <string name="err_geo_lat_range">Latitude must be between -90 and 90</string>
+    <string name="err_geo_lon_range">Longitude must be between -180 and 180</string>
+    <string name="err_hex_even">Hex length must be even, currently %1$d</string>
+    <string name="err_hex_invalid">Contains non-hex characters: %1$s</string>
+    <string name="err_need_read_first">Read a tag first</string>
+    <string name="err_read_failed">Read failed</string>
+    <string name="err_export_failed">Export failed</string>
+    <string name="err_no_raw_channel">This tag has no usable raw channel</string>
+    <string name="err_command_empty">Command is empty</string>
+    <string name="err_apdu_empty">APDU is empty</string>
+    <string name="err_tag_no_ndef_write">This tag does not support NDEF and cannot be written</string>
+    <string name="err_tag_no_ndef_image">This tag does not support NDEF and cannot hold an image</string>
+    <string name="err_qr_content_empty">QR content is empty</string>
+    <string name="err_qr_encode_failed">Content too long to encode as a QR code (please shorten)</string>
+    <string name="err_qr_capacity">Content too long or the QR exceeds tag capacity (shorten the content or use "Content only")</string>
+    <string name="err_image_decode">Cannot decode this image format</string>
+    <string name="err_image_capacity">Still %1$d bytes after compression, over the tag capacity of %2$d bytes</string>
+    <string name="err_share_parse">Shared content could not be parsed</string>
+    <string name="err_share_image">Shared image could not be read</string>
+    <string name="err_share_file_empty">Shared file is empty or unreadable</string>
+    <string name="err_vcard_parse">vCard format could not be parsed; fields may be incomplete</string>
+    <string name="err_vcal_summary_empty">Event title cannot be empty</string>
+    <string name="err_geo_uri">geo: URI format unrecognized or coordinates out of range</string>
+
+    <!-- ============ Success messages ============ -->
+    <string name="msg_write_ok">%1$s succeeded</string>
+    <string name="msg_write_failed">%1$s failed</string>
+    <string name="msg_write_failed_reason">%1$s failed: %2$s</string>
+    <string name="msg_tag_detected">Tag detected %1$s · %2$s</string>
+    <string name="msg_await_tag">Waiting for a tag: %1$s</string>
+    <string name="msg_restored_sectors">Restored %1$d sectors</string>
+    <string name="msg_exported_json">JSON exported</string>
+    <string name="msg_exported_text">Text exported</string>
+    <string name="msg_desfire_read">DESFire info read</string>
+    <string name="msg_desfire_file">File 0x%1$s: %2$s</string>
+    <string name="msg_dump_blocks">Read %1$d blocks</string>
+    <string name="msg_dump_pages">Read %1$d pages</string>
+    <string name="msg_raw_sent">Sent %1$d bytes, received %2$d bytes in response</string>
+    <string name="msg_apdu_sent">Sent %1$d bytes, status word %2$s</string>
+    <string name="msg_aid_selected">Selected\n%1$s</string>
+    <string name="msg_qr_raw_written">Raw content written (%1$d bytes)</string>
+    <string name="msg_qr_image_written">QR image written (%1$d bytes, module %2$dpx)</string>
+    <string name="msg_qr_both_written">Content and QR written (%1$d bytes, module %2$dpx)</string>
+    <string name="msg_image_written">Wrote a %1$d×%2$d image (%3$d bytes, original %4$d bytes)</string>
+
+    <!-- ============ Write operation names ============ -->
+    <string name="op_write_text">Write text</string>
+    <string name="op_write_uri">Write link</string>
+    <string name="op_write_mime">Write MIME</string>
+    <string name="op_write_wifi">Write Wi-Fi config</string>
+    <string name="op_write_vcard">Write contact card</string>
+    <string name="op_write_mecard">Write MECARD</string>
+    <string name="op_write_vcalendar">Write calendar event</string>
+    <string name="op_write_smartposter">Write Smart Poster</string>
+    <string name="op_write_handover">Write handover</string>
+    <string name="op_write_aid">Write AID</string>
+    <string name="op_write_external">Write external type</string>
+    <string name="op_write_geo">Write location</string>
+    <string name="op_write_bluetooth">Write Bluetooth pairing</string>
+    <string name="op_write_android_app">Write app launch record</string>
+    <string name="op_write_qrcode">Write QR code</string>
+    <string name="op_write_image">Write image</string>
+    <string name="op_format">Format tag</string>
+    <string name="op_write_block">Write block %1$d</string>
+    <string name="op_restore">Factory reset</string>
+    <string name="op_write_page">Write page %1$d</string>
+    <string name="op_send_command">Send command</string>
+    <string name="op_send_apdu">Send APDU</string>
+    <string name="op_select_aid">Select AID</string>
+
+    <!-- ============ Write catalog ============ -->
+    <string name="we_text_title">Plain text</string>
+    <string name="we_text_summary">Write a note; shown on tap</string>
+    <string name="we_uri_title">Link</string>
+    <string name="we_uri_summary">Open a URL or deep link</string>
+    <string name="we_geo_title">Location</string>
+    <string name="we_geo_summary">Write coordinates; tap opens the map</string>
+    <string name="we_wifi_title">Wi-Fi config</string>
+    <string name="we_wifi_summary">Join a Wi-Fi network on tap; Android confirms</string>
+    <string name="we_vcard_title">Contact card vCard</string>
+    <string name="we_vcard_summary">Standard card format; importable to contacts</string>
+    <string name="we_mecard_title">Contact card MECARD</string>
+    <string name="we_mecard_summary">Compact format; native on Japanese phones</string>
+    <string name="we_vcalendar_title">Calendar event</string>
+    <string name="we_vcalendar_summary">Write a calendar invitation</string>
+    <string name="we_smartposter_title">Smart Poster</string>
+    <string name="we_smartposter_summary">Titled composite record; multiple links</string>
+    <string name="we_image_title">Image</string>
+    <string name="we_image_summary">Write an image, auto-compressed to tag capacity</string>
+    <string name="we_qrcode_title">QR code</string>
+    <string name="we_qrcode_summary">Turn a URL or text into a QR on the tag</string>
+    <string name="we_androidapp_title">App launch</string>
+    <string name="we_androidapp_summary">Force-open an app; store if not installed</string>
+    <string name="we_handover_title">Handover</string>
+    <string name="we_handover_summary">NFC Forum Hr/Hs handover record</string>
+    <string name="we_bluetooth_title">Bluetooth pairing</string>
+    <string name="we_bluetooth_summary">Write a Bluetooth OOB pairing record</string>
+    <string name="we_aid_title">AID identifier</string>
+    <string name="we_aid_summary">Type 4 tag application identifier</string>
+    <string name="we_mime_title">Custom MIME</string>
+    <string name="we_mime_summary">Any MIME type and content</string>
+    <string name="we_external_title">External type</string>
+    <string name="we_external_summary">domain:type style custom record</string>
+    <string name="we_mifareclassic_title">MIFARE Classic block</string>
+    <string name="we_mifareclassic_summary">Sector-authenticated data block read/write</string>
+    <string name="we_mifareultralight_title">MIFARE Ultralight page</string>
+    <string name="we_mifareultralight_summary">4-byte user data by page number</string>
+    <string name="we_iso15693_title">ISO 15693 block</string>
+    <string name="we_iso15693_summary">NFC-V block-addressed read/write</string>
+    <string name="we_desfire_title">DESFire advanced</string>
+    <string name="we_desfire_summary">APDU passthrough and file management</string>
+    <string name="we_format_title">Format tag</string>
+    <string name="we_format_summary">Erase everything and set read-only; irreversible</string>
+    <string name="we_restoremifare_title">Factory reset</string>
+    <string name="we_restoremifare_summary">Restore default keys and standard MAD on all sectors</string>
+
+    <!-- ============ Write groups ============ -->
+    <string name="wg_basic">Basics</string>
+    <string name="wg_contact">Contacts &amp; schedule</string>
+    <string name="wg_system">System &amp; protocol</string>
+    <string name="wg_advanced">Advanced custom</string>
+    <string name="wg_storage">Storage tech</string>
+    <string name="wg_management">Tag management</string>
+
+    <!-- ============ HCE & background service ============ -->
+    <string name="hce_service_desc">NFC Toolbox · Virtual card</string>
+    <string name="hce_aid_group_desc">Virtual card (demo)</string>
+    <string name="hce_card_label">NFC Toolbox</string>
+    <string name="bg_scan_channel">Background scan</string>
+    <string name="bg_scan_desc">Keep NFC scanning in the background</string>
+    <string name="bg_scan_title">NFC Toolbox · Background scan on</string>
+    <string name="bg_scan_text">Hold a tag against the back of your phone to read</string>
+    <string name="bg_scan_stopped">Background scan stopped</string>
+
+    <!-- ============ Export report ============ -->
+    <string name="export_header">=== NFC TAG EXPORT ===</string>
+    <string name="export_card_type">Card type : %1$s (%2$s)</string>
+    <string name="export_card_summary">Summary   : %1$s</string>
+    <string name="export_uid_reversed">Reverse UID: %1$s</string>
+    <string name="export_techs">Techs      : %1$s</string>
+    <string name="export_raw_techs">Raw techs  : %1$s</string>
+    <string name="export_ndef_state">NDEF state : %1$s</string>
+    <string name="export_ndef_capacity">NDEF       : %1$d bytes, writable=%2$s</string>
+    <string name="export_ndef_blank">NDEF       : blank tag; formatted on write</string>
+    <string name="export_ndef_error">NDEF error : %1$s</string>
+    <string name="export_mifare">MIFARE     : %1$dKB, %2$d sectors, %3$d blocks</string>
+    <string name="export_ultralight">Ultralight: %1$d pages</string>
+    <string name="export_records_header">--- NDEF RECORDS ---</string>
+    <string name="export_record_title">[%1$d] %2$s  (%3$d bytes)</string>
+    <string name="export_record_text">     text : %1$s</string>
+    <string name="export_record_uri">     link : %1$s</string>
+    <string name="export_record_mime">     MIME : %1$s</string>
+    <string name="export_record_raw">     raw  : %1$s</string>
+    <string name="export_blocks_header">--- MIFARE BLOCKS ---</string>
+    <string name="export_block">Block %1$d : %2$s</string>
+    <string name="export_share_title">Export tag data</string>
+    <string name="export_cached">Cached at %1$s</string>
+    <string name="export_write_failed">Failed to write cache</string>
+
+    <!-- ============ Misc ============ -->
+    <string name="antenna_builtin">Built-in</string>
+    <string name="antenna_pos_top">Top</string>
+    <string name="antenna_pos_bottom">Bottom</string>
+    <string name="antenna_pos_middle">Middle</string>
+    <string name="antenna_pos_left">Left</string>
+    <string name="antenna_pos_right">Right</string>
+    <string name="desfire_keys_summary">%1$d AES keys</string>
+
+
+    <!-- ================= Tag Clone ================= -->
+    <string name="clone_title">Clone Tag</string>
+    <string name="clone_intro">Copy the contents of one tag onto another blank tag.</string>
+    <string name="clone_step_source">Step 1 · Read source tag</string>
+    <string name="clone_step_target">Step 2 · Write target tag</string>
+    <string name="clone_source_hint">Hold the source tag against the NFC area on the back of the phone</string>
+    <string name="clone_ready_hint">Source tag captured. Now hold a blank tag against the phone and tap the button below to write.</string>
+    <string name="clone_write_hint">Hold the blank target tag against the NFC area</string>
+    <string name="clone_btn_read">Read source tag</string>
+    <string name="clone_btn_write">Write target tag</string>
+    <string name="clone_btn_reread">Re-read source tag</string>
+    <string name="clone_btn_again">Clone another</string>
+    <string name="clone_btn_finish">Done</string>
+    <string name="clone_source_card">Source tag</string>
+    <string name="clone_label_uid">UID</string>
+    <string name="clone_label_card">Card type</string>
+    <string name="clone_label_tech">Tech</string>
+    <string name="clone_label_records">Records</string>
+    <string name="clone_label_size">Data size</string>
+    <string name="clone_copies">%1$d cloned</string>
+    <string name="clone_none">No source tag captured yet</string>
+    <string name="clone_limits_title">Cloning limits</string>
+    <string name="clone_limits_uid">UID: locked at the factory on almost all tags and cannot be written. This app does not rewrite UIDs.</string>
+    <string name="clone_limits_key">Key / password area: not part of the NDEF message, and intentionally not copied.</string>
+    <string name="clone_limits_type">Cloning fails when the target tag is too small; the screen shows required vs. available bytes.</string>
+    <string name="clone_entry_title">Clone tag</string>
+    <string name="clone_entry_summary">Read one tag, then write its contents onto another blank tag</string>
+    <string name="op_clone_write">Clone tag</string>
+    <string name="err_clone_source_empty">Source tag has no NDEF content, nothing to clone</string>
+    <string name="err_clone_need_source">Read a tag first, then start cloning</string>
+    <string name="msg_clone_captured">Source tag captured: %1$d record(s) / %2$d bytes</string>
+
+    <string name="clone_records_value">%1$d</string>
+    <string name="clone_size_value">%1$d bytes</string>
+    <string name="clone_lock_switch">Lock after write</string>
+    <string name="clone_lock_note">Irreversible</string>
+
+    <string name="err_lock_need_ndef">This tag cannot be made read-only</string>
+    <string name="err_lock_failed">Failed to lock the tag; it may already be locked or not responding</string>
+
+    <string name="clone_lock_title">Make read-only?</string>
+    <string name="clone_lock_msg">Once locked, this tag can never be written again. This cannot be undone.</string>
+    <string name="clone_lock_confirm">Lock it</string>
+
+    <!-- ================= MIFARE Backup / Restore ================= -->
+    <string name="mifare_backup_section">Full card backup</string>
+    <string name="mifare_backup_desc">Save the entire MIFARE Classic card to a file, then write it back onto a blank card of the same model.</string>
+    <string name="mifare_backup_btn">Back up this card</string>
+    <string name="mifare_restore_btn">Restore onto this card</string>
+    <string name="mifare_backup_key_label">Auth key (hex, leave blank for the default key)</string>
+    <string name="mifare_backup_key_ph">FFFFFFFFFFFF</string>
+    <string name="mifare_backup_done">Backed up: %1$d sectors, %2$d writable blocks</string>
+    <string name="mifare_backup_done_partial">Backed up (partial): %2$d of %1$d sectors failed authentication</string>
+    <string name="mifare_restore_done">Restore finished: %1$d written, %2$d skipped, %3$d failed</string>
+    <string name="mifare_backup_note">Safety: sector trailers (which hold keys) are never backed up, and block 0 (UID) cannot be written. The restored card keeps its own UID, so this cannot be used to clone an access card.</string>
+    <string name="mifare_restore_confirm_title">Write %1$d blocks?</string>
+    <string name="mifare_restore_confirm_msg">The backup data will be written onto the tag you hold against the phone, overwriting its current contents. Sector trailers (keys) and block 0 (UID) are left untouched.</string>
+    <string name="err_backup_size_mismatch">Card model mismatch: backup has %1$d blocks, target card has %2$d blocks</string>
+    <string name="err_backup_sector_skipped">Sector %1$d not authenticated, skipped</string>
+    <string name="err_restore_block_failed">Block %1$d write failed: %2$s</string>
+    <string name="err_backup_version">Backup file version is %1$d, only version 1 is supported</string>
+    <string name="err_backup_empty">Backup file contains no block data</string>
+    <string name="err_backup_key_invalid">Key must be 12 hex digits (6 bytes)</string>
+    <string name="err_mifare_not_classic">The current tag is not a MIFARE Classic</string>
+
+    <string name="op_restore_backup">Restore full-card backup</string>
+    <string name="err_backup_page_mismatch">Target card too small: needs %1$d pages, has %2$d pages</string>
+    <string name="ul_backup_section">Full card backup</string>
+    <string name="ul_backup_desc">Save the user data pages of an NTAG / Ultralight card to a file, then write them back onto a blank card of the same model.</string>
+    <string name="ul_backup_done">%1$s backed up: %2$d user pages</string>
+    <string name="ul_restore_done">Restore finished: %1$d written, %2$d skipped, %3$d failed</string>
+    <string name="ul_restore_confirm_title">Write %1$d pages?</string>
+    <string name="ul_restore_confirm_msg">The backup data will be written onto the tag you hold against the phone, overwriting its current user data. UID pages, lock bytes, the CC page and the trailing config area (password) are left untouched.</string>
+    <string name="ul_backup_note">Safety: only user data pages (from page 4 on) are backed up. UID, lock bytes, CC and the trailing password area are never touched, so the restored card keeps its own UID and this cannot be used to clone an access card.</string>
+    <string name="mifare_keybook_label">Keybook (tried in order when backing up)</string>
+    <string name="mifare_keybook_save">Save</string>
+    <string name="mifare_keybook_empty">No keys saved yet, only the default key will be tried</string>
+    <string name="mifare_keybook_saved">Key saved to the keybook</string>
+    <string name="err_keybook_full">Keybook holds at most %1$d keys, remove one first</string>
+    <string name="template_section">My templates</string>
+    <string name="template_desc">Save content you use often, then fill the form with one tap</string>
+    <string name="template_empty">No templates yet. Save one from shared content or a scanned tag</string>
+    <string name="template_save">Save as template</string>
+    <string name="template_name_ph">Template name (optional)</string>
+    <string name="template_saved">Template saved</string>
+    <string name="template_unnamed">Untitled template</string>
+    <string name="template_from_share">Save the current shared content as a template</string>
+    <string name="err_template_nothing">Nothing to save</string>
+    <string name="err_template_image">Image content cannot be saved as a template</string>
+    <string name="err_template_unsupported">This kind of content is not supported yet</string>
+    <string name="read_template_desc">Save the first record of this card as a template, then write it onto other cards with one tap</string>
+</resources>
